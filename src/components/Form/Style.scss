@@ -1,0 +1,39 @@
+.contact-form {
+    width: 100%;
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+
+        .flex {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 15px;
+            input {
+                width: 100%;
+            }
+        }
+        input, textarea {
+            border-radius: 3px;
+            border: 1px solid var(--lightBackground);
+            padding: 15px 30px;
+            background-color: var(--lightBackground);
+            color: var(--slate);
+            &::placeholder {
+                color: var(--slate);
+            }
+
+            &:focus {
+                border-bottom: 1px solid var(   --primary-darker);
+            }
+
+            
+        }
+        textarea {
+            resize: vertical;
+        }
+    }
+    
+}

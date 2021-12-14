@@ -1,0 +1,59 @@
+*,
+::before,
+::after {
+    box-sizing: inherit;
+    outline: none !important;
+}
+
+body {
+    font-family: var(--font-mono);
+    margin: 0px;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--lightSlate);
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.highlight:hover {
+    color: var(--primary);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+p {
+    a {
+        display: inline-block;
+        text-decoration: none;
+        text-decoration-skip-ink: auto;
+        position: relative;
+        transition: var(--transition) !important;
+        cursor: pointer;
+        color: var(--primary);
+
+        &::after {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 1px;
+            position: relative;
+            bottom: 0.1em;
+            background-color: var(--primary);
+            transition: var(--transition) !important;
+            opacity: 0.5;
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
