@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "cross-env VUE_APP_BACKEND_URL=http://localhost:8000 vue-cli-service serve",
-    "build": "cross-env VUE_APP_BACKEND_URL=https://brojenuelbackend.herokuapp.com vue-cli-service build",
+    "build": "cross-env VUE_APP_BACKEND_URL=https://lakshitha1629.github.io vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy": "yarn build && yarn dist",
     "dist": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./dist.ps1"
