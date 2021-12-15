@@ -32,7 +32,7 @@
                     <li v-scrollanimation style="transition-delay: 550ms">
                         <div>
                             <a
-                                href="https://drive.google.com/file/d/1jlHwrHN7W9X4yKXsXW6Z5bJzXgx0-_c3/view?usp=sharing"
+                                href="https://drive.google.com/file/d/12We4vSH6R4S1fY8qLvJoq2AQvBZ1BKVw/view?usp=sharing"
                                 target="_blank"
                                 class="btn-outline-[var(--primary)] px-15px py-5px rounded-md font-600 opacity-90"
                                 style="border: 1px solid"

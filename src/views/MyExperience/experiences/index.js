@@ -2,7 +2,7 @@ const ProjectXSpace = {
     position: 'Software & Machine learning Engineer ',
     tab: 'ProjectXSpace',
     company: 'ProjectXSpace',
-    workStart: 'Mar. 2021',
+    workStart: 'Oct. 2021',
     workUntil: '<span class="present-work">Present</span>',
     des: `<p style="font-style: italic;font-size: initial;"> ProjectXSpace, Rosanna, Victoria, Australia (Remote)</p><br>
     <div class="text-justify">

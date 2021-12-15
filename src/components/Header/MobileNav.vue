@@ -63,7 +63,7 @@
                     </div>
                 </li>
                 <li v-scrollanimation style="transition-delay: 550ms">
-                    <a href="https://drive.google.com/file/d/1jlHwrHN7W9X4yKXsXW6Z5bJzXgx0-_c3/view?usp=sharing" target="_blank">
+                    <a href="https://drive.google.com/file/d/12We4vSH6R4S1fY8qLvJoq2AQvBZ1BKVw/view?usp=sharing" target="_blank">
                         <Icon name="download" :size="15" />
                         Resume
                     </a>
