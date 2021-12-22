@@ -10,12 +10,12 @@ export default {
     ],
     techs: [
         {
-            name: 'html&css',
-            icon: 'html',
+            name: 'HTML & CSS',
+            icon: 'none',
         },
         {
             name: 'JSP',
-            icon: 'javascript',
+            icon: 'none',
         },
     ],
 };

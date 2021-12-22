@@ -1,6 +1,15 @@
 export default {
     works: [
         {
+            overline: 'Dotnet API Endpoint (ProjectXSpace)',
+            title: 'Delivery CostCal API',
+            des: `<div class="text-justify">The Delivery CostCal API is to calculate the distribution cost by distance. There are two main options, mail delivery and delivery. The API provides a delivery cost based on a given configuration.
+            <p style="font-size: 13px; margin-top: 2px;"> <b>Role</b>: Backend developer</p> 
+            <p style="font-size: 13px; margin-top: 2px;"> <b>Tools & Technologies</b>: Dotnet, SSMS, Google API, Swagger</p></div>`,
+            techs: ['.NET', 'Google API', 'Swagger'],
+            img: 'https://i.imgur.com/UaxqLxY.jpg',
+        },
+        {
             overline: 'Python Project (ProjectXSpace)',
             title: 'Delivery Route Engine',
             des: `<div class="text-justify">Find the nearest and fastest routine for delivery drivers to deliver the orders which were placed by customers.
