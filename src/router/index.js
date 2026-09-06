@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import AboutMe from './../views/AboutMe/AboutMe.vue';
+import Portfolio from './../views/Portfolio.vue';
 
 const routes = [
     {
@@ -9,22 +9,22 @@ const routes = [
     {
         path: '/home',
         name: 'AboutMe',
-        component: AboutMe,
+        component: Portfolio,
     },
     {
         path: '/experience',
         name: 'Experience',
-        component: () => import('./../views/MyExperience'),
+        component: Portfolio,
     },
     {
         path: '/Project',
         name: 'Project',
-        component: () => import('./../views/MyWork'),
+        component: Portfolio,
     },
     {
         path: '/contact',
         name: 'Contact',
-        component: () => import('./../views/ContactMe'),
+        component: Portfolio,
     },
     {
         path: '/:pathMatch(.*)*',
