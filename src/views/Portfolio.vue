@@ -7,7 +7,7 @@
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a v-for="item in navItems" :key="item.href" :href="item.href">{{ item.label }}</a>
-        <a class="nav-resume" href="https://drive.google.com/file/d/12We4vSH6R4S1fY8qLvJoq2AQvBZ1BKVw/view?usp=sharing" target="_blank" rel="noopener">Resume <i class="bx bx-arrow-up-right"></i></a>
+        <a class="nav-resume" href="https://drive.google.com/file/d/1QePsPyedxINA9ULzJid7MSU2y_K80tf1/view?usp=sharing" target="_blank" rel="noopener">Resume <i class="bx bx-arrow-up-right"></i></a>
       </nav>
       <button class="menu-button" type="button" aria-label="Open navigation" @click="menuOpen = !menuOpen">
         <i :class="menuOpen ? 'bx bx-x' : 'bx bx-menu'"></i>
@@ -16,7 +16,7 @@
 
     <div v-if="menuOpen" class="mobile-menu">
       <a v-for="item in navItems" :key="item.href" :href="item.href" @click="menuOpen = false">{{ item.label }}</a>
-      <a href="https://drive.google.com/file/d/12We4vSH6R4S1fY8qLvJoq2AQvBZ1BKVw/view?usp=sharing" target="_blank" rel="noopener" @click="menuOpen = false">Resume <i class="bx bx-arrow-up-right"></i></a>
+      <a href="https://drive.google.com/file/d/1QePsPyedxINA9ULzJid7MSU2y_K80tf1/view?usp=sharing" target="_blank" rel="noopener" @click="menuOpen = false">Resume <i class="bx bx-arrow-up-right"></i></a>
     </div>
 
     <main id="top">
