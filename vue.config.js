@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath: '/lakshitha1629.github.io/',
+    publicPath: '/',
     pwa: {
         name: 'Lakshitha1629',
         description:
