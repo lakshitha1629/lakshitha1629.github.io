@@ -104,8 +104,32 @@
         </div>
       </section>
 
+      <section id="recognition" class="section-wrap split-section" aria-labelledby="recognition-title">
+        <div class="section-kicker">05 / Recognition</div>
+        <div class="split-content recognition-layout">
+          <div class="recognition-column">
+            <div class="section-heading-row"><h2 id="recognition-title">Built in public, tested in competition.</h2><span class="section-note">Awards + competitions</span></div>
+            <div class="recognition-list">
+              <article v-for="award in awards" :key="award.title" class="recognition-item">
+                <span class="recognition-index">{{ award.index }}</span>
+                <div><h3>{{ award.title }}</h3><p>{{ award.detail }}</p><span class="recognition-meta">{{ award.meta }}</span></div>
+              </article>
+            </div>
+          </div>
+          <div class="recognition-column">
+            <div class="section-heading-row"><h2>Leadership beyond the code.</h2><span class="section-note">Activities + service</span></div>
+            <div class="recognition-list">
+              <article v-for="activity in activities" :key="activity.title" class="recognition-item">
+                <span class="recognition-index">{{ activity.index }}</span>
+                <div><h3>{{ activity.title }}</h3><p>{{ activity.detail }}</p><span class="recognition-meta">{{ activity.meta }}</span></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section-wrap contact-section" aria-labelledby="contact-title">
-        <div class="contact-card"><div><div class="section-kicker">05 / Contact</div><h2 id="contact-title">Have a product, platform or hard problem in mind?</h2><p>I’m open to thoughtful conversations about engineering leadership, product development and ambitious technical work.</p></div><div class="contact-actions"><a class="button button-primary" href="mailto:lakshitha1629@gmail.com">lakshitha1629@gmail.com <i class="bx bx-right-arrow-alt"></i></a><div class="contact-links"><a href="https://www.linkedin.com/in/lakshitha1629/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/lakshitha1629" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@lakshitha1629" target="_blank" rel="noopener">Medium</a></div></div></div>
+        <div class="contact-card"><div><div class="section-kicker">06 / Contact</div><h2 id="contact-title">Have a product, platform or hard problem in mind?</h2><p>I’m open to thoughtful conversations about engineering leadership, product development and ambitious technical work.</p></div><div class="contact-actions"><a class="button button-primary" href="mailto:lakshitha1629@gmail.com">lakshitha1629@gmail.com <i class="bx bx-right-arrow-alt"></i></a><div class="contact-links"><a href="https://www.linkedin.com/in/lakshitha1629/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/lakshitha1629" target="_blank" rel="noopener">GitHub</a><a href="https://medium.com/@lakshitha1629" target="_blank" rel="noopener">Medium</a></div></div></div>
       </section>
     </main>
 
@@ -125,6 +149,7 @@ export default {
         { label: 'Experience', href: '#experience' },
         { label: 'Work', href: '#projects' },
         { label: 'Toolkit', href: '#capabilities' },
+        { label: 'Recognition', href: '#recognition' },
       ],
       stats: [
         { value: '6+', label: 'years shipping software' },
@@ -145,6 +170,22 @@ export default {
         { index: '04', type: 'Machine learning · Research', title: 'PhishNet', description: 'A deep-learning project for phishing detection, reflecting my long-running interest in applied ML and security.', tags: ['Python', 'Deep learning', 'Jupyter'], link: 'https://github.com/lakshitha1629/PhishNet_Deep_Learning_for_Phishing_Detection', featured: false },
         { index: '05', type: 'Operations research · Backend', title: 'Delivery Route Engine', description: 'Vehicle-routing optimization using maps, OR-Tools and real-time messaging to help delivery teams make better decisions.', tags: ['Python', 'OR-Tools', 'Google Maps'], link: 'https://github.com/lakshitha1629/a-star-shortest-path-with-google-maps-api', featured: false },
         { index: '06', type: 'Computer vision · PWA', title: 'Shrimp Counter', description: 'A browser-based computer-vision proof of concept for counting shrimp and clusters through magnification hardware.', tags: ['Vue.js', 'OpenCV.js', 'Firebase'], link: 'https://github.com/lakshitha1629/fishcount', featured: false },
+      ],
+      awards: [
+        { index: '01', title: 'Mobitel Smart Sri Lanka Hackathon', detail: '1st Runner Up in a national hackathon focused on building useful technology solutions.', meta: 'Mobitel and Sri Lanka Telecom' },
+        { index: '02', title: 'UWU GameJam', detail: '1st place for a game development project created through the Uva Wellassa University community.', meta: 'Mozilla Campus Club · 2018' },
+        { index: '03', title: 'Deft-coders 12-hour hackathon', detail: 'Placed 3rd in 2016 and 5th in 2018 while competing in rapid, team-based software development.', meta: 'Computer Society · Uva Wellassa University' },
+        { index: '04', title: 'Cyber Security Quiz Competition', detail: 'Placed 7th in a national cybersecurity-focused competition.', meta: 'Sri Lanka CERT|CC · 2019' },
+        { index: '05', title: 'Innovation competitions', detail: 'Participated in SAHASAK NIMAVUM and Maker Fair, exploring new ideas through hands-on engineering.', meta: 'Provincial 2019 · Kandy 2018' },
+        { index: '06', title: 'Deft-coders v6.0', detail: 'Organized a 12-hour hackathon for student developers and makers.', meta: 'Computer Society · Uva Wellassa University' },
+      ],
+      activities: [
+        { index: '01', title: 'Computer Society leadership', detail: 'Vice president and professional-development program coordinator, helping create opportunities for student builders.', meta: 'Uva Wellassa University · 2018' },
+        { index: '02', title: 'IEEE Student Branch', detail: 'Served as a first-year student coordinator and student representative for the IIT batch.', meta: 'Uva Wellassa University · 2017' },
+        { index: '03', title: 'University sports', detail: 'Played for the university volleyball team and karate team, including participation in the Sri Lanka University Games.', meta: 'SLUG · 2017' },
+        { index: '04', title: 'School leadership and sport', detail: 'Senior prefect, Under-19 volleyball vice-captain, and member of the handball, cricket and carom teams.', meta: 'Nalanda College · 2012 - 2014' },
+        { index: '05', title: 'Community and event work', detail: 'Coordinated the Geethma musical concert, supported the Ananda vs Nalanda Big Match committee, and contributed to the Saukyadana Unit.', meta: 'Nalanda College · 2013 - 2014' },
+        { index: '06', title: 'Service and first aid', detail: 'Attended Emergency First Aid and Basic Life Support training while supporting school community initiatives.', meta: 'Nalanda College · 2013' },
       ],
       skillGroups: [
         { label: 'Frontend', items: ['Angular', 'React', 'Next.js', 'Vue.js', 'TypeScript', 'JavaScript'] },
@@ -211,9 +252,10 @@ body { background: var(--portfolio-bg); color: var(--portfolio-text); overflow-x
 .experience-list { margin-top: 2.5rem; }.experience-item { display: grid; grid-template-columns: 155px minmax(0, 1fr); gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--portfolio-border); }.experience-item:first-child { border-top: 0; padding-top: 0; }.experience-date { padding-top: .3rem; color: var(--portfolio-accent); font-size: .75rem; }.experience-body h3 { margin: 0 0 .55rem; font-size: 1.15rem; }.experience-body h3 span { color: var(--portfolio-accent-2); font-weight: 500; }.experience-body p { margin: 0; max-width: 720px; font-size: .95rem; }
 .tag-row { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }.tag-row span { padding: .34rem .55rem; border: 1px solid var(--portfolio-border); color: var(--portfolio-muted); font-size: .68rem; }
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2.4rem; }.project-card { display: flex; flex-direction: column; min-height: 290px; padding: 1.5rem; border: 1px solid var(--portfolio-border); background: rgba(14, 27, 42, .66); transition: transform .22s ease, border-color .22s ease, background .22s ease; }.project-card:hover { transform: translateY(-5px); border-color: rgba(126, 224, 196, .48); background: rgba(19, 36, 56, .88); }.project-card.featured { background: linear-gradient(145deg, rgba(31, 56, 70, .82), rgba(14, 27, 42, .72)); }.project-card-top { display: flex; justify-content: space-between; }.project-card-top a { color: var(--portfolio-muted); font-size: 1.25rem; }.project-card-top a:hover { color: var(--portfolio-accent); }.project-index { color: var(--portfolio-accent); font: .72rem ui-monospace, monospace; }.project-type { margin: 2.5rem 0 .7rem; color: var(--portfolio-accent-2); font-size: .67rem; letter-spacing: .06em; text-transform: uppercase; }.project-card h3 { margin: 0; font-size: 1.35rem; }.project-card p:not(.project-type) { flex: 1; margin: .7rem 0 0; font-size: .9rem; line-height: 1.65; }
+.recognition-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }.recognition-column { min-width: 0; border-top: 1px solid var(--portfolio-border); }.recognition-list { margin-top: .55rem; }.recognition-item { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .85rem; padding: 1.15rem 0; border-bottom: 1px solid var(--portfolio-border); }.recognition-index { padding-top: .25rem; color: var(--portfolio-accent); font: .72rem ui-monospace, monospace; }.recognition-item h3 { margin: 0 0 .4rem; font-size: 1rem; line-height: 1.35; }.recognition-item p { margin: 0; font-size: .87rem; line-height: 1.6; }.recognition-meta { display: block; margin-top: .55rem; color: var(--portfolio-accent-2); font: .67rem ui-monospace, monospace; letter-spacing: .03em; }
 .skills-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 4rem; }.skill-groups { border-top: 1px solid var(--portfolio-border); }.skill-group { display: grid; grid-template-columns: 135px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--portfolio-border); }.skill-label { color: var(--portfolio-accent); font-size: .72rem; padding-top: .25rem; }.skill-items { display: flex; flex-wrap: wrap; gap: .5rem .8rem; color: var(--portfolio-text); font-size: .95rem; }
 .contact-section { padding-top: 2rem; padding-bottom: 5rem; }.contact-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; padding: 3rem; border: 1px solid rgba(126, 224, 196, .28); background: linear-gradient(120deg, rgba(18, 40, 50, .9), rgba(14, 27, 42, .85)); }.contact-card h2 { max-width: 650px; margin: .8rem 0 1rem; font-size: clamp(2.2rem, 4vw, 4.2rem); line-height: .98; letter-spacing: -.06em; }.contact-card p { max-width: 560px; color: var(--portfolio-muted); line-height: 1.7; }.contact-actions { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 1.5rem; }.contact-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .9rem; }
 .site-footer { display: flex; justify-content: space-between; gap: 1rem; max-width: 1240px; margin: 0 auto; padding: 1.5rem 2rem 2rem; border-top: 1px solid var(--portfolio-border); color: var(--portfolio-muted); font: .72rem ui-monospace, monospace; }.site-footer a { color: var(--portfolio-text); }
-@media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 3rem; min-height: auto; padding-top: 4rem; }.hero-panel { max-width: 620px; }.split-section { grid-template-columns: 1fr; gap: 1.5rem; }.about-grid, .skills-layout, .contact-card { grid-template-columns: 1fr; gap: 2rem; }.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 3rem; min-height: auto; padding-top: 4rem; }.hero-panel { max-width: 620px; }.split-section { grid-template-columns: 1fr; gap: 1.5rem; }.about-grid, .skills-layout, .contact-card, .recognition-layout { grid-template-columns: 1fr; gap: 2rem; }.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 680px) { .site-header { padding: 1rem 1.1rem; }.desktop-nav { display: none; }.menu-button { display: block; }.mobile-menu { position: fixed; top: 4.2rem; right: 1rem; z-index: 19; display: flex; flex-direction: column; min-width: 210px; padding: .75rem; border: 1px solid var(--portfolio-border); background: rgba(14, 27, 42, .98); box-shadow: 0 18px 50px rgba(0,0,0,.3); }.mobile-menu a { padding: .75rem; }.section-wrap { padding-left: 1.1rem; padding-right: 1.1rem; }.hero { padding-top: 3.5rem; padding-bottom: 4.5rem; }.hero h1 { font-size: clamp(3rem, 15vw, 5rem); }.hero-lede { font-size: 1rem; }.hero-panel { min-height: 330px; }.code-window { margin-top: 3.2rem; margin-bottom: 2.5rem; }.split-section { padding-top: 4rem; padding-bottom: 4rem; }.project-grid { grid-template-columns: 1fr; }.experience-item { grid-template-columns: 1fr; gap: .6rem; }.contact-card { padding: 1.5rem; }.site-footer { flex-direction: column; padding-left: 1.1rem; padding-right: 1.1rem; } }
 </style>
