@@ -67,8 +67,27 @@
         </div>
       </section>
 
+      <section id="education" class="section-wrap split-section education-section" aria-labelledby="education-title">
+        <div class="section-kicker">02 / Education</div>
+        <div class="split-content">
+          <div class="section-heading-row"><h2 id="education-title">The foundation behind the work.</h2><span class="section-note">2013 — 2020</span></div>
+          <div class="education-list">
+            <article v-for="entry in education" :key="entry.program" class="education-item">
+              <div class="education-date">{{ entry.period }}</div>
+              <div class="education-card">
+                <div class="education-card-top"><span class="education-level">{{ entry.level }}</span><i class="bx bx-book-open"></i></div>
+                <h3>{{ entry.program }}</h3>
+                <p class="education-institution">{{ entry.institution }} <span>· {{ entry.location }}</span></p>
+                <p>{{ entry.detail }}</p>
+                <div class="tag-row"><span v-for="tag in entry.tags" :key="tag">{{ tag }}</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="experience" class="section-wrap split-section" aria-labelledby="experience-title">
-        <div class="section-kicker">02 / Experience</div>
+        <div class="section-kicker">03 / Experience</div>
         <div class="split-content">
           <div class="section-heading-row"><h2 id="experience-title">Where I’ve been making things work.</h2><span class="section-note">2019 — now</span></div>
           <div class="experience-list">
@@ -81,7 +100,7 @@
       </section>
 
       <section id="projects" class="section-wrap split-section" aria-labelledby="projects-title">
-        <div class="section-kicker">03 / Selected work</div>
+        <div class="section-kicker">04 / Selected work</div>
         <div class="split-content">
           <div class="section-heading-row"><h2 id="projects-title">A few problems I’ve enjoyed solving.</h2><a class="text-link" href="https://github.com/lakshitha1629?tab=repositories" target="_blank" rel="noopener">Browse all 110 repos <i class="bx bx-up-arrow-alt"></i></a></div>
           <div class="project-grid">
@@ -97,7 +116,7 @@
       </section>
 
       <section id="capabilities" class="section-wrap split-section" aria-labelledby="capabilities-title">
-        <div class="section-kicker">04 / Toolkit</div>
+        <div class="section-kicker">05 / Toolkit</div>
         <div class="split-content skills-layout">
           <div><h2 id="capabilities-title">The toolkit behind the work.</h2><p>I’m comfortable moving across the stack, choosing the right tool for the constraint rather than forcing one technology onto every problem.</p></div>
           <div class="skill-groups"><div v-for="group in skillGroups" :key="group.label" class="skill-group"><span class="skill-label">{{ group.label }}</span><div class="skill-items"><span v-for="skill in group.items" :key="skill">{{ skill }}</span></div></div></div>
@@ -154,6 +173,7 @@ export default {
       currentYear: new Date().getFullYear(),
       navItems: [
         { label: 'About', href: '#about' },
+        { label: 'Education', href: '#education' },
         { label: 'Experience', href: '#experience' },
         { label: 'Work', href: '#projects' },
         { label: 'Toolkit', href: '#capabilities' },
@@ -164,6 +184,11 @@ export default {
         { value: '110', label: 'public GitHub repositories' },
         { value: '01', label: 'published research paper' },
         { value: '∞', label: 'curiosity for what’s next' },
+      ],
+      education: [
+        { period: 'Mar 2016 - Mar 2020', level: 'Bachelor of Science · Honours', program: 'Industrial Information Technology', institution: 'Uva Wellassa University', location: 'Sri Lanka', detail: 'A 4-year, 120-credit English-medium degree covering software engineering, algorithms, databases, web applications, networks, business intelligence, project management and research.', tags: ['Software engineering', 'Algorithms', 'Databases', 'Research'] },
+        { period: 'Aug 2014', level: 'G.C.E. Advanced Level', program: 'Commerce Stream', institution: 'Nalanda College, Colombo', location: 'Sri Lanka', detail: 'Accounting - A · Business Studies - B · Information & Communication Technology - C.', tags: ['Accounting · A', 'Business Studies · B', 'ICT · C'] },
+        { period: 'Aug 2013', level: 'General Information Technology', program: 'General Information Technology Examination', institution: 'Nalanda College, Colombo', location: 'Sri Lanka', detail: 'Result: A · English medium.', tags: ['English medium', 'Result · A'] },
       ],
       experiences: [
         { period: 'Jul 2022 — now', role: 'Associate Tech Lead / Software Engineer', company: 'DirectFN', summary: 'Building enterprise fintech applications with C#/.NET and complex Oracle PL/SQL structures, while improving engineering workflows and supporting client delivery in Scrum teams.', tags: ['C# / .NET', 'Oracle PL/SQL', 'Fintech'] },
@@ -263,6 +288,7 @@ body { background: var(--portfolio-bg); color: var(--portfolio-text); overflow-x
 .text-link { display: inline-flex; align-items: center; gap: .35rem; margin-top: 1rem; color: var(--portfolio-accent); text-decoration: none; font-weight: 700; }
 .signal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }.signal-card { padding: 1.15rem; border: 1px solid var(--portfolio-border); background: rgba(19, 36, 56, .5); }.signal-card strong { display: block; color: var(--portfolio-text); font-size: 2rem; letter-spacing: -.06em; }.signal-card span { display: block; margin-top: .3rem; color: var(--portfolio-muted); font-size: .78rem; line-height: 1.4; }
 .section-heading-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; }.section-heading-row h2 { margin-bottom: 0; }.section-note { color: var(--portfolio-muted); font-size: .72rem; white-space: nowrap; }
+.education-list { margin-top: 2.5rem; }.education-item { display: grid; grid-template-columns: 155px minmax(0, 1fr); gap: 1.5rem; padding: 1rem 0; }.education-date { padding-top: 1.2rem; color: var(--portfolio-accent); font: .75rem ui-monospace, monospace; }.education-card { position: relative; overflow: hidden; padding: 1.5rem 1.6rem; border: 1px solid var(--portfolio-border); background: linear-gradient(135deg, rgba(19, 36, 56, .85), rgba(14, 27, 42, .62)); }.education-card::before { position: absolute; top: -3rem; right: -2rem; width: 9rem; height: 9rem; border: 1px solid rgba(126, 224, 196, .18); border-radius: 50%; content: ''; }.education-item:first-child .education-card { border-color: rgba(126, 224, 196, .38); background: linear-gradient(135deg, rgba(24, 57, 62, .95), rgba(14, 27, 42, .72)); }.education-card-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.35rem; }.education-level { color: var(--portfolio-accent-2); font: .68rem ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; }.education-card-top i { color: var(--portfolio-accent); font-size: 1.35rem; }.education-card h3 { position: relative; z-index: 1; max-width: 720px; margin: 0; font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1.1; letter-spacing: -.045em; }.education-institution { position: relative; z-index: 1; margin: .55rem 0 0; color: var(--portfolio-text) !important; font-size: .95rem !important; }.education-institution span { color: var(--portfolio-muted); }.education-card > p:not(.education-institution) { position: relative; z-index: 1; margin: 1rem 0 0; max-width: 760px; font-size: .9rem; }
 .experience-list { margin-top: 2.5rem; }.experience-item { display: grid; grid-template-columns: 155px minmax(0, 1fr); gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--portfolio-border); }.experience-item:first-child { border-top: 0; padding-top: 0; }.experience-date { padding-top: .3rem; color: var(--portfolio-accent); font-size: .75rem; }.experience-body h3 { margin: 0 0 .55rem; font-size: 1.15rem; }.experience-body h3 span { color: var(--portfolio-accent-2); font-weight: 500; }.experience-body p { margin: 0; max-width: 720px; font-size: .95rem; }
 .tag-row { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }.tag-row span { padding: .34rem .55rem; border: 1px solid var(--portfolio-border); color: var(--portfolio-muted); font-size: .68rem; }
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2.4rem; }.project-card { display: flex; flex-direction: column; min-height: 290px; padding: 1.5rem; border: 1px solid var(--portfolio-border); background: rgba(14, 27, 42, .66); transition: transform .22s ease, border-color .22s ease, background .22s ease; }.project-card:hover { transform: translateY(-5px); border-color: rgba(126, 224, 196, .48); background: rgba(19, 36, 56, .88); }.project-card.featured { background: linear-gradient(145deg, rgba(31, 56, 70, .82), rgba(14, 27, 42, .72)); }.project-card-top { display: flex; justify-content: space-between; }.project-card-top a { color: var(--portfolio-muted); font-size: 1.25rem; }.project-card-top a:hover { color: var(--portfolio-accent); }.project-index { color: var(--portfolio-accent); font: .72rem ui-monospace, monospace; }.project-type { margin: 2.5rem 0 .7rem; color: var(--portfolio-accent-2); font-size: .67rem; letter-spacing: .06em; text-transform: uppercase; }.project-card h3 { margin: 0; font-size: 1.35rem; }.project-card p:not(.project-type) { flex: 1; margin: .7rem 0 0; font-size: .9rem; line-height: 1.65; }
@@ -271,5 +297,5 @@ body { background: var(--portfolio-bg); color: var(--portfolio-text); overflow-x
 .contact-section { padding-top: 2rem; padding-bottom: 5rem; }.contact-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; padding: 3rem; border: 1px solid rgba(126, 224, 196, .28); background: linear-gradient(120deg, rgba(18, 40, 50, .9), rgba(14, 27, 42, .85)); }.contact-card h2 { max-width: 650px; margin: .8rem 0 1rem; font-size: clamp(2.2rem, 4vw, 4.2rem); line-height: .98; letter-spacing: -.06em; }.contact-card p { max-width: 560px; color: var(--portfolio-muted); line-height: 1.7; }.contact-actions { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 1.5rem; }.contact-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .9rem; }
 .site-footer { display: flex; justify-content: space-between; gap: 1rem; max-width: 1240px; margin: 0 auto; padding: 1.5rem 2rem 2rem; border-top: 1px solid var(--portfolio-border); color: var(--portfolio-muted); font: .72rem ui-monospace, monospace; }.site-footer a { color: var(--portfolio-text); }
 @media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 3rem; min-height: auto; padding-top: 4rem; }.hero-panel { max-width: 620px; }.split-section { grid-template-columns: 1fr; gap: 1.5rem; }.about-grid, .skills-layout, .contact-card { grid-template-columns: 1fr; gap: 2rem; }.recognition-header { grid-template-columns: 1fr; gap: 1.5rem; }.recognition-highlights, .recognition-layout { margin-left: 0; }.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 680px) { .site-header { padding: 1rem 1.1rem; }.desktop-nav { display: none; }.menu-button { display: block; }.mobile-menu { position: fixed; top: 4.2rem; right: 1rem; z-index: 19; display: flex; flex-direction: column; min-width: 210px; padding: .75rem; border: 1px solid var(--portfolio-border); background: rgba(14, 27, 42, .98); box-shadow: 0 18px 50px rgba(0,0,0,.3); }.mobile-menu a { padding: .75rem; }.section-wrap { padding-left: 1.1rem; padding-right: 1.1rem; }.hero { padding-top: 3.5rem; padding-bottom: 4.5rem; }.hero h1 { font-size: clamp(3rem, 15vw, 5rem); }.hero-lede { font-size: 1rem; }.hero-panel { min-height: 330px; }.code-window { margin-top: 3.2rem; margin-bottom: 2.5rem; }.split-section, .recognition-section { padding-top: 4rem; padding-bottom: 4rem; }.recognition-highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2.5rem; }.recognition-layout { grid-template-columns: 1fr; }.recognition-panel { padding: 1.2rem; }.recognition-intro h2 { font-size: clamp(2.5rem, 14vw, 4.5rem); }.project-grid { grid-template-columns: 1fr; }.experience-item { grid-template-columns: 1fr; gap: .6rem; }.contact-card { padding: 1.5rem; }.site-footer { flex-direction: column; padding-left: 1.1rem; padding-right: 1.1rem; } }
+@media (max-width: 680px) { .site-header { padding: 1rem 1.1rem; }.desktop-nav { display: none; }.menu-button { display: block; }.mobile-menu { position: fixed; top: 4.2rem; right: 1rem; z-index: 19; display: flex; flex-direction: column; min-width: 210px; padding: .75rem; border: 1px solid var(--portfolio-border); background: rgba(14, 27, 42, .98); box-shadow: 0 18px 50px rgba(0,0,0,.3); }.mobile-menu a { padding: .75rem; }.section-wrap { padding-left: 1.1rem; padding-right: 1.1rem; }.hero { padding-top: 3.5rem; padding-bottom: 4.5rem; }.hero h1 { font-size: clamp(3rem, 15vw, 5rem); }.hero-lede { font-size: 1rem; }.hero-panel { min-height: 330px; }.code-window { margin-top: 3.2rem; margin-bottom: 2.5rem; }.split-section, .recognition-section { padding-top: 4rem; padding-bottom: 4rem; }.recognition-highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2.5rem; }.recognition-layout { grid-template-columns: 1fr; }.recognition-panel { padding: 1.2rem; }.recognition-intro h2 { font-size: clamp(2.5rem, 14vw, 4.5rem); }.education-item { grid-template-columns: 1fr; gap: .6rem; padding: .8rem 0; }.education-date { padding-top: 0; }.education-card { padding: 1.2rem; }.project-grid { grid-template-columns: 1fr; }.experience-item { grid-template-columns: 1fr; gap: .6rem; }.contact-card { padding: 1.5rem; }.site-footer { flex-direction: column; padding-left: 1.1rem; padding-right: 1.1rem; } }
 </style>
