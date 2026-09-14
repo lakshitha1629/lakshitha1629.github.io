@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.429dc3003fd3173a621f13854ce4ab8a.js"
+  "/precache-manifest.9cb7227dae1325a66cd6998bb30e1c9c.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "LakshithaPerera-portfolio"});
+workbox.core.setCacheNameDetails({prefix: "lakshitha-perera-portfolio"});
 
 workbox.core.skipWaiting();
 
