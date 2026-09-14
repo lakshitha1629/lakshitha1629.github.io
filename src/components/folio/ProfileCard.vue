@@ -7,19 +7,6 @@
                         <img :src="profile.photo" :alt="profile.photoAlt" />
                     </div>
                     <div class="folio-card-top">
-                        <nav class="folio-card-nav" aria-label="Sections">
-                            <a
-                                v-for="(item, index) in navItems"
-                                :key="item.id"
-                                :href="'#' + item.id"
-                                :class="{ 'is-active': active === item.id }"
-                                :style="{ '--d': index }"
-                                :aria-label="item.label"
-                                @click.prevent="$emit('go', item.id)"
-                            >
-                                <i class="bx" :class="item.icon"></i>
-                            </a>
-                        </nav>
                         <div class="folio-card-socials">
                             <a
                                 v-for="(item, index) in profile.socials"
@@ -31,23 +18,18 @@
                                 rel="noopener"
                             >
                                 <i class="bx" :class="item.icon"></i>
+                                <span class="social-tip">{{ item.title }}</span>
                             </a>
                         </div>
                     </div>
-                    <p class="folio-avail">
-                        <span>Open to conversations</span>
-                        <i></i>
-                    </p>
-                    <div class="folio-card-copy">
-                        <h1>
-                            Hey, I’m&nbsp;<span>{{ typed }}</span><span class="folio-caret" aria-hidden="true"></span>
-                        </h1>
-                        <p>{{ profile.headline }} Based in {{ profile.location }}.</p>
-                        <div class="folio-card-rule" aria-hidden="true"></div>
-                        <div class="folio-card-actions">
-                            <button class="folio-btn folio-btn-round" type="button" aria-label="Explore" @click="$emit('explore')">
-                                <i class="bx bx-right-arrow-alt"></i>
-                            </button>
+                    <div class="folio-card-info">
+                        <p class="info-status"><i class="info-dot"></i> Open to conversation</p>
+                        <h2 class="info-name">{{ profile.name }}</h2>
+                        <p class="info-role">{{ profile.role }}</p>
+                        <div class="info-row">
+                            <span class="info-location"><i class="bx bx-map"></i> {{ profile.location }}</span>
+                        </div>
+                        <div class="info-actions">
                             <button class="folio-btn folio-btn-lime" type="button" @click="$emit('talk')">Let’s talk</button>
                             <a class="folio-btn folio-btn-ghost" :href="profile.resume.local" download>
                                 <i class="bx bx-download"></i> Download CV
@@ -111,26 +93,14 @@ export default {
     name: 'ProfileCard',
     props: {
         project: { type: Object, default: null },
-        active: { type: String, default: 'home' },
     },
-    emits: ['explore', 'talk', 'close', 'go'],
+    emits: ['close', 'talk'],
     data() {
         return {
             profile,
-            typed: '',
             inView: false,
-            timer: null,
             observer: null,
             slideIndex: 0,
-            navItems: [
-                { id: 'home', label: 'Home', icon: 'bx-home-alt' },
-                { id: 'about', label: 'About', icon: 'bx-user' },
-                { id: 'experience', label: 'Experience', icon: 'bx-briefcase' },
-                { id: 'work', label: 'Work', icon: 'bx-grid-alt' },
-                { id: 'skills', label: 'Skills', icon: 'bx-code-alt' },
-                { id: 'education', label: 'Education', icon: 'bx-book' },
-                { id: 'contact', label: 'Contact', icon: 'bx-envelope' },
-            ],
         };
     },
     computed: {
@@ -151,7 +121,6 @@ export default {
     mounted() {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (reduce) {
-            this.typed = profile.shortName;
             this.inView = true;
             return;
         }
@@ -159,7 +128,6 @@ export default {
             (entries) => {
                 if (entries.some((entry) => entry.isIntersecting)) {
                     this.inView = true;
-                    this.tick();
                     this.observer.disconnect();
                 }
             },
@@ -168,19 +136,9 @@ export default {
         this.observer.observe(this.$el);
     },
     beforeUnmount() {
-        clearTimeout(this.timer);
         if (this.observer) this.observer.disconnect();
     },
     methods: {
-        tick() {
-            const full = profile.shortName;
-            if (this.typed.length >= full.length) {
-                this.typed = full;
-                return;
-            }
-            this.typed = full.slice(0, this.typed.length + 1);
-            this.timer = setTimeout(this.tick, 72);
-        },
         nextSlide() {
             if (!this.projectImages.length) return;
             this.slideIndex = (this.slideIndex + 1) % this.projectImages.length;

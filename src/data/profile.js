@@ -22,9 +22,9 @@ export const profile = {
     ogImage: 'https://i.ibb.co/hKSpySf/image.jpg',
     startedYear: 2019,
     stats: [
-        { value: '6+', label: 'years shipping software' },
-        { value: '110', label: 'public GitHub repositories' },
-        { value: '01', label: 'published research paper' },
+        { value: '6+', label: 'years shipping software', icon: 'bx-briefcase' },
+        { value: '110', label: 'public GitHub repositories', icon: 'bxl-github' },
+        { value: '01', label: 'published research paper', icon: 'bx-file' },
     ],
     about: {
         who: 'I’m Lakshitha, an Associate Tech Lead and full-stack software engineer based in Nugegoda, Sri Lanka. I’ve spent 6+ years delivering enterprise applications across fintech, SaaS, streaming, e-commerce and AI/ML — currently at DirectFN, after product work with teams in Australia and earlier startups here at home.',

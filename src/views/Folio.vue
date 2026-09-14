@@ -11,50 +11,75 @@
         </div>
 
         <div class="folio-shell">
-            <ProfileCard :project="activeProject" :active="activeId" @go="go" @explore="go('about')" @talk="go('contact')" @close="caseId = null" />
+            <nav class="folio-nav-rail reveal" aria-label="Sections">
+                <div class="folio-nav-rail-links">
+                    <a
+                        v-for="item in navItems"
+                        :key="item.id"
+                        :href="'#' + item.id"
+                        :class="{ 'is-active': activeId === item.id }"
+                        :aria-label="item.label"
+                        @click.prevent="go(item.id)"
+                    >
+                        <i class="bx" :class="item.icon"></i>
+                        <span class="rail-tip">{{ item.label }}</span>
+                    </a>
+                </div>
+                <button class="folio-nav-rail-theme" type="button" aria-label="Toggle light / dark theme" @click="toggleTheme">
+                    <i class="bx" :class="isLight ? 'bx-moon' : 'bx-sun'"></i>
+                    <span class="rail-tip">{{ isLight ? 'Dark mode' : 'Light mode' }}</span>
+                </button>
+            </nav>
+
+            <ProfileCard :project="activeProject" @close="caseId = null" @talk="go('contact')" />
 
             <main id="main" class="folio-main">
                 <section id="home" class="folio-cover">
-                    <header class="hero-bar reveal">
-                        <div class="hero-id">
-                            <img :src="profile.avatar" :alt="profile.shortName + ' avatar'" />
-                            <div>
-                                <strong>{{ profile.name }}</strong>
-                                <span>{{ profile.role }}</span>
-                            </div>
-                        </div>
-                        <p class="hero-clock">{{ clock }}</p>
-                    </header>
+                    <p class="hero-kicker reveal d1"><i class="hero-kicker-dot"></i> Full-Stack Engineer · Tech Lead · Problem Solver</p>
 
-                    <div class="hero-stage">
-                    <h2 class="hero-title reveal d2">
+                    <h1 class="hero-title reveal d2">
                         I’m building
-                        <em class="mark">software</em>
-                        <em class="mark">&amp; systems</em>
+                        <em class="mark">software &amp; systems</em>
                         people remember
-                    </h2>
+                    </h1>
 
-                    <div class="hero-figure reveal d3" aria-hidden="true">
+                    <p class="hero-desc reveal d2">{{ profile.headline }} Passionate about solving real-world problems with technology.</p>
+
+                    <div class="hero-stats reveal d3">
+                        <template v-for="(stat, index) in profile.stats" :key="stat.label">
+                            <div class="hero-stat">
+                                <i class="bx hero-stat-icon" :class="stat.icon"></i>
+                                <div class="hero-stat-text">
+                                    <strong>{{ stat.value }}</strong>
+                                    <span>{{ stat.label }}</span>
+                                </div>
+                            </div>
+                            <span v-if="index < profile.stats.length - 1" class="hero-stat-sep" aria-hidden="true"></span>
+                        </template>
+                    </div>
+
+                    <div class="hero-visual reveal d4" aria-hidden="true">
                         <svg class="hero-ribbon" viewBox="0 0 520 200" fill="none">
                             <path d="M8 142C72 28 148 176 236 78c70-78 118 86 196 18 52-46 62-8 78 22" />
                         </svg>
-                        <div class="hero-stamp">
+                        <div class="hero-visual-card">
                             <img :src="profile.avatar" alt="" />
-                        </div>
-                    </div>
-                    </div>
-
-                    <div class="folio-stats reveal d4">
-                        <div v-for="stat in profile.stats" :key="stat.label">
-                            <strong>{{ stat.value }}</strong>
-                            <span>{{ stat.label }}</span>
+                            <span>Let’s build something great!</span>
                         </div>
                     </div>
 
-                    <div class="folio-marquee" aria-hidden="true">
-                        <div class="folio-marquee-track">
-                            <b v-for="(item, i) in marquee" :key="i">{{ item }}</b>
+                    <div class="hero-techbar reveal d4">
+                        <span class="hero-techbar-label">Tech I work with</span>
+                        <div class="hero-techbar-pills">
+                            <div class="hero-techbar-track">
+                                <span v-for="(tech, index) in heroTechLoop" :key="index">{{ tech }}</span>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="hero-foot reveal d5">
+                        <p class="hero-scroll"><i class="bx bx-mouse"></i> Scroll to explore</p>
+                        <p class="hero-quote-mini">“Technology is more powerful when it brings people together.”</p>
                     </div>
                 </section>
 
@@ -296,6 +321,7 @@ export default {
             activities,
             skillMountains,
             ready: false,
+            isLight: false,
             activeId: 'home',
             aboutTab: 'who',
             projectFilter: 'All',
@@ -307,14 +333,25 @@ export default {
             spyLock: false,
             observers: [],
             loaderTimer: null,
-            clock: '',
-            clockTimer: null,
             timelineRaf: 0,
+            navItems: [
+                { id: 'home', label: 'Home', icon: 'bx-home-alt' },
+                { id: 'about', label: 'About', icon: 'bx-user' },
+                { id: 'experience', label: 'Experience', icon: 'bx-briefcase' },
+                { id: 'work', label: 'Work', icon: 'bx-grid-alt' },
+                { id: 'skills', label: 'Skills', icon: 'bx-code-alt' },
+                { id: 'education', label: 'Education', icon: 'bx-book' },
+                { id: 'contact', label: 'Contact', icon: 'bx-envelope' },
+            ],
+            heroTech: ['C# / .NET', 'Angular', 'React', 'Python', 'AI / ML', 'Oracle PL/SQL', 'Fintech', 'System Design'],
         };
     },
     computed: {
         year() {
             return new Date().getFullYear();
+        },
+        heroTechLoop() {
+            return [...this.heroTech, ...this.heroTech];
         },
         aboutTabs() {
             return [
@@ -323,10 +360,6 @@ export default {
                 { id: 'think', label: 'How I think' },
                 { id: 'exploring', label: 'Exploring' },
             ];
-        },
-        marquee() {
-            const items = [...profile.supporting, ...profile.about.identity];
-            return items.concat(items);
         },
         // Only real, photographed work makes it into the showcase — no placeholder cards.
         showcaseProjects() {
@@ -351,8 +384,8 @@ export default {
     mounted() {
         document.title = profile.seoTitle;
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        this.tickClock();
-        this.clockTimer = setInterval(this.tickClock, 30000);
+        this.isLight = localStorage.getItem('folio-theme') === 'light';
+        document.documentElement.classList.toggle('theme-light', this.isLight);
         this.bindSpy();
         this.bindRise();
         this.bindTimeline();
@@ -369,7 +402,6 @@ export default {
     },
     beforeUnmount() {
         clearTimeout(this.loaderTimer);
-        clearInterval(this.clockTimer);
         cancelAnimationFrame(this.timelineRaf);
         this.observers.forEach((obs) => obs.disconnect());
         window.removeEventListener('keydown', this.onKey);
@@ -377,14 +409,10 @@ export default {
         window.removeEventListener('resize', this.onTimelineScroll);
     },
     methods: {
-        tickClock() {
-            this.clock = new Intl.DateTimeFormat('en-US', {
-                weekday: 'short',
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-            }).format(new Date());
+        toggleTheme() {
+            this.isLight = !this.isLight;
+            document.documentElement.classList.toggle('theme-light', this.isLight);
+            localStorage.setItem('folio-theme', this.isLight ? 'light' : 'dark');
         },
         go(id) {
             this.activeId = id;
