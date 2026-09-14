@@ -323,6 +323,17 @@ html.theme-light .skill-band li {
     box-shadow: 0 0 0 4px rgba(0, 245, 106, 0.16);
 }
 
+.hero-lede {
+    position: relative;
+    z-index: 1;
+    margin: 14px 0 0;
+    max-width: 36em;
+    color: var(--f-muted);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
 .hero-title {
     position: relative;
     z-index: 1;
@@ -543,6 +554,7 @@ html.theme-light .skill-band li {
 
 @media (min-width: 1101px) {
     .folio-cover > .hero-kicker,
+    .folio-cover > .hero-lede,
     .folio-cover > .hero-title,
     .folio-cover > .hero-desc,
     .folio-cover > .hero-stats {
@@ -1399,6 +1411,7 @@ html.theme-light .skill-band li {
     scroll-margin-top: 28px;
 }
 
+.folio-section h1,
 .folio-section h2 {
     margin: 0 0 18px;
     font-family: var(--font-display);
@@ -1815,6 +1828,8 @@ html.theme-light .skill-band li {
 
 .work-card {
     appearance: none;
+    display: block;
+    text-decoration: none;
     border: 1px solid var(--f-line);
     background: var(--f-elev);
     border-radius: 22px;
@@ -1900,6 +1915,82 @@ html.theme-light .skill-band li {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.pub-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-article {
+    max-width: 720px;
+    padding-top: 28px;
+}
+
+.project-article h1 {
+    max-width: 18ch;
+}
+
+.project-article h2 {
+    margin: 28px 0 10px;
+    font-size: 1.05rem;
+    max-width: none;
+}
+
+.project-article p {
+    margin: 0 0 12px;
+    color: var(--f-muted);
+    line-height: 1.65;
+}
+
+.project-article-media {
+    width: 100%;
+    max-height: 360px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin: 8px 0 22px;
+    border: 1px solid var(--f-line);
+}
+
+.project-article-links,
+.project-article p a {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin: 18px 18px 0 0;
+    color: var(--f-text);
+    font-weight: 600;
+}
+
+.project-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 18px;
+    color: var(--f-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.folio-sitelinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin: 28px 0 0;
+}
+
+.folio-sitelinks a {
+    color: var(--f-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.folio-sitelinks a.router-link-active,
+.folio-sitelinks a.router-link-exact-active {
+    color: var(--f-text);
 }
 
 .skill-bands {

@@ -33,7 +33,8 @@
                     </div>
                     <div class="folio-card-info">
                         <p class="info-status"><i class="info-dot"></i> Open to conversation</p>
-                        <h2 class="info-name">{{ profile.name }}</h2>
+                        <h1 v-if="nameTag === 'h1'" class="info-name">{{ profile.name }}</h1>
+                        <p v-else class="info-name">{{ profile.name }}</p>
                         <p class="info-role">{{ profile.role }}</p>
                         <div class="info-row">
                             <span class="info-location"><i class="bx bx-map"></i> {{ profile.location }}</span>
@@ -107,6 +108,7 @@ export default {
     name: 'ProfileCard',
     props: {
         project: { type: Object, default: null },
+        nameTag: { type: String, default: 'p' },
     },
     emits: ['close', 'talk'],
     data() {

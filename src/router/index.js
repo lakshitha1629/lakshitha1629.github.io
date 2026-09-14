@@ -4,12 +4,12 @@ import Folio from './../views/Folio.vue';
 const routes = [
     {
         path: '/',
-        redirect: '/home',
+        name: 'Home',
+        component: Folio,
     },
     {
         path: '/home',
-        name: 'AboutMe',
-        component: Folio,
+        redirect: '/',
     },
     {
         path: '/about',
@@ -22,17 +22,32 @@ const routes = [
         component: Folio,
     },
     {
-        path: '/Project',
+        path: '/projects',
         name: 'Project',
         component: Folio,
     },
     {
-        path: '/work',
-        redirect: '/Project',
+        path: '/projects/:id',
+        name: 'ProjectDetail',
+        component: Folio,
     },
     {
-        path: '/projects',
-        redirect: '/Project',
+        path: '/Project',
+        redirect: '/projects',
+    },
+    {
+        path: '/work',
+        redirect: '/projects',
+    },
+    {
+        path: '/publications',
+        name: 'Publications',
+        component: Folio,
+    },
+    {
+        path: '/publications/:id',
+        name: 'PublicationDetail',
+        component: Folio,
     },
     {
         path: '/contact',
@@ -45,19 +60,17 @@ const routes = [
         component: Folio,
     },
     {
-        path: '/ai',
-        name: 'Ai',
-        component: Folio,
-    },
-    {
-        path: '/engineering',
-        name: 'Devops',
-        component: Folio,
-    },
-    {
         path: '/education',
         name: 'Education',
         component: Folio,
+    },
+    {
+        path: '/ai',
+        redirect: '/projects',
+    },
+    {
+        path: '/engineering',
+        redirect: '/skills',
     },
     {
         path: '/future',

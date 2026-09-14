@@ -3,13 +3,18 @@
         <p class="kicker">404</p>
         <h1>This page isn’t here.</h1>
         <p>The path you’re looking for doesn’t exist in Lakshitha’s portfolio.</p>
-        <router-link class="folio-btn folio-btn-lime" to="/home">Back home</router-link>
+        <router-link class="folio-btn folio-btn-lime" to="/">Back home</router-link>
     </div>
 </template>
 
 <script>
 export default {
     name: 'PageNotFound',
+    mounted() {
+        document.title = 'Page not found | Lakshitha Perera';
+        const robots = document.head.querySelector('meta[name="robots"]');
+        if (robots) robots.setAttribute('content', 'noindex,follow');
+    },
 };
 </script>
 

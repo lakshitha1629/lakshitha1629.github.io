@@ -1,10 +1,10 @@
 {
-  "name": "LakshithaPerera-portfolio",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build && node scripts/sync-spa-fallback.js",
+    "name": "lakshitha-perera-portfolio",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve",
+        "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build && node scripts/generate-seo-pages.js && node scripts/sync-spa-fallback.js",
     "lint": "vue-cli-service lint",
     "deploy": "yarn build && yarn dist",
     "dist": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./dist.ps1"

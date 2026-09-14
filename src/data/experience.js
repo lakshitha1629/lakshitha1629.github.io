@@ -8,7 +8,7 @@ export const experience = [
         workStart: 'Jul 2022',
         workUntil: 'Present',
         period: 'Jul 2022 — Present',
-        url: '',
+        url: 'https://www.directfn.com/',
         current: true,
         summary:
             'Progressed from Software Engineer to Associate Tech Lead while delivering enterprise fintech applications and client-specific solutions with C#/.NET and Oracle PL/SQL.',

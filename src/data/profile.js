@@ -7,7 +7,7 @@ export const profile = {
     role: 'Associate Tech Lead',
     location: 'Nugegoda, Sri Lanka',
     photo: '/profile/lakshitha.png',
-    photoAlt: 'Lakshitha Perera',
+    photoAlt: 'Lakshitha Perera, Associate Tech Lead and Full-Stack Engineer from Sri Lanka',
     avatar: '/profile/avatar.png',
     email,
     resume,
@@ -17,9 +17,9 @@ export const profile = {
     headline: 'Associate Tech Lead building full-stack software for fintech, SaaS, streaming and AI products.',
     seoTitle: 'Lakshitha Perera | Associate Tech Lead & Full-Stack Engineer',
     seoDescription:
-        'Associate Tech Lead and full-stack software engineer with 6+ years shipping enterprise applications across fintech, SaaS, streaming, e-commerce and AI/ML.',
+        'Lakshitha Perera is an Associate Tech Lead and Full-Stack Engineer from Sri Lanka specializing in AI, scalable web applications, cloud systems and software engineering.',
     siteUrl: 'https://lakshitha1629.github.io/',
-    ogImage: 'https://i.ibb.co/hKSpySf/image.jpg',
+    ogImage: 'https://lakshitha1629.github.io/profile/lakshitha.png',
     startedYear: 2019,
     stats: [
         { value: '6+', label: 'years shipping software', icon: 'bx-briefcase' },

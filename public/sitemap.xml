@@ -2,30 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://lakshitha1629.github.io/</loc>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://lakshitha1629.github.io/home</loc>
+        <lastmod>2026-09-14</lastmod>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://lakshitha1629.github.io/about</loc>
-        <priority>0.8</priority>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://lakshitha1629.github.io/experience</loc>
+        <lastmod>2026-09-14</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://lakshitha1629.github.io/Project</loc>
+        <loc>https://lakshitha1629.github.io/projects</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/publications</loc>
+        <lastmod>2026-09-14</lastmod>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/education</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://lakshitha1629.github.io/skills</loc>
+        <lastmod>2026-09-14</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://lakshitha1629.github.io/contact</loc>
+        <lastmod>2026-09-14</lastmod>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/toolgenie</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/ayozat</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/zatlive</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/rightsmint</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/delivery-route</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/shrimp</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/robo-arm</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/python-sinhala</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/pascal-sinhala</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/weddings</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/projects/phishnet</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/publications/phishnet</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://lakshitha1629.github.io/publications/python-sinhala</loc>
+        <lastmod>2026-09-14</lastmod>
+        <priority>0.7</priority>
     </url>
 </urlset>

@@ -1,9 +1,24 @@
 module.exports = {
     publicPath: '/',
+    chainWebpack(config) {
+        config.plugin('html').tap((args) => {
+            if (process.env.NODE_ENV === 'production') {
+                args[0].minify = {
+                    collapseWhitespace: true,
+                    removeComments: false,
+                    removeRedundantAttributes: true,
+                    removeScriptTypeAttributes: true,
+                    removeStyleLinkTypeAttributes: true,
+                    useShortDoctype: true,
+                };
+            }
+            return args;
+        });
+    },
     pwa: {
         name: 'Lakshitha Perera',
         description:
-            'Associate Tech Lead and full-stack software engineer with 6+ years shipping enterprise applications across fintech, SaaS, streaming, e-commerce and AI/ML.',
+            'Lakshitha Perera is an Associate Tech Lead and Full-Stack Engineer from Sri Lanka specializing in AI, scalable web applications, cloud systems and software engineering.',
         themeColor: '#c6f431',
         msTileColor: '#0b0b0b',
         workboxOptions: {

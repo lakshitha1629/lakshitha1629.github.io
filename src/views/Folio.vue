@@ -35,17 +35,72 @@
                 </button>
             </nav>
 
-            <ProfileCard :project="activeProject" @close="caseId = null" @talk="go('contact')" />
+            <ProfileCard :name-tag="profileNameTag" @talk="go('contact')" />
 
             <main id="main" class="folio-main">
+                <article v-if="routeProject" class="folio-section project-article">
+                    <router-link class="project-back" to="/projects"><i class="bx bx-left-arrow-alt"></i> Selected work</router-link>
+                    <p class="folio-kicker">{{ routeProject.overline }}</p>
+                    <h1>{{ routeProject.title }}</h1>
+                    <p class="folio-lead">
+                        A project by Lakshitha Perera, Associate Tech Lead, Full-Stack Engineer and AI Developer based in Sri
+                        Lanka.
+                    </p>
+                    <img
+                        v-if="routeProject.image"
+                        class="project-article-media"
+                        :src="routeProject.image"
+                        :alt="routeProject.title + ' by Lakshitha Perera'"
+                    />
+                    <h2>The problem</h2>
+                    <p>{{ routeProject.problem }}</p>
+                    <h2>The work</h2>
+                    <p>{{ routeProject.solution }}</p>
+                    <p v-if="routeProject.role"><strong>Role.</strong> {{ routeProject.role }}</p>
+                    <p v-if="routeProject.architecture"><strong>Architecture.</strong> {{ routeProject.architecture }}</p>
+                    <div v-if="routeProject.technologies.length" class="folio-chips">
+                        <span v-for="tech in routeProject.technologies" :key="tech">{{ tech }}</span>
+                    </div>
+                    <div class="project-article-links">
+                        <a v-for="link in routeProject.links" :key="link.url" :href="link.url" target="_blank" rel="noopener">{{
+                            link.label
+                        }}</a>
+                    </div>
+                </article>
+
+                <article v-else-if="routePublication" class="folio-section project-article">
+                    <router-link class="project-back" to="/publications"><i class="bx bx-left-arrow-alt"></i> Publications</router-link>
+                    <p class="folio-kicker">{{ routePublication.type }} · {{ routePublication.year }}</p>
+                    <h1>{{ routePublication.title }}</h1>
+                    <p class="folio-lead">Author: Lakshitha Perera</p>
+                    <p>{{ routePublication.description }}</p>
+                    <p v-if="routePublication.venue"><strong>Venue.</strong> {{ routePublication.venue }}</p>
+                    <p>
+                        <a v-if="routePublication.url" :href="routePublication.url" target="_blank" rel="noopener">External reference</a>
+                        <router-link v-if="routePublication.relatedProject" :to="'/projects/' + routePublication.relatedProject">
+                            Project page
+                        </router-link>
+                    </p>
+                </article>
+
+                <article v-else-if="$route.name === 'ProjectDetail' || $route.name === 'PublicationDetail'" class="folio-section project-article">
+                    <h1>This page isn’t here.</h1>
+                    <p class="folio-lead">That project or publication is not in Lakshitha Perera’s portfolio.</p>
+                    <router-link class="project-back" to="/">Back home</router-link>
+                </article>
+
+                <template v-else>
                 <section id="home" class="folio-cover">
                     <p class="hero-kicker reveal d1"><i class="hero-kicker-dot"></i> Full-Stack Engineer · Tech Lead · Problem Solver</p>
+                    <p class="hero-lede reveal d1">
+                        Associate Tech Lead, Full-Stack Engineer and AI Developer based in Sri Lanka.
+                    </p>
 
-                    <h1 class="hero-title">
+                    <p class="hero-title">
                         <span class="hero-title-line reveal d1">I’m building</span>
                         <em class="mark reveal d2">software &amp; systems</em>
                         <span class="hero-title-line reveal d3">people remember</span>
-                    </h1>
+                    </p>
 
                     <p class="hero-desc reveal d3">{{ profile.headline }} Passionate about solving real-world problems with technology.</p>
 
@@ -103,7 +158,9 @@
 
                 <section id="about" class="folio-section">
                     <p class="folio-kicker" data-rise>About</p>
-                    <h2 data-rise>Who I am, and how I work.</h2>
+                    <component :is="sectionTag('About')" data-rise>{{
+                        sectionHeading('About', 'About Lakshitha Perera', 'Who I am, and how I work.')
+                    }}</component>
                     <p class="folio-lead" data-rise>{{ profile.headline }} Based in {{ profile.location }}.</p>
                     <div class="folio-tabs" role="tablist" aria-label="About" data-rise>
                         <button
@@ -130,7 +187,9 @@
 
                 <section id="experience" class="folio-section">
                     <p class="folio-kicker" data-rise>Education & Experience</p>
-                    <h2 data-rise>Where the work got real.</h2>
+                    <component :is="sectionTag('Experience')" data-rise>{{
+                        sectionHeading('Experience', 'Experience — Lakshitha Perera', 'Where the work got real.')
+                    }}</component>
                     <div class="folio-timeline" ref="timeline">
                         <ol>
                             <li
@@ -174,7 +233,9 @@
 
                 <section id="work" class="folio-section">
                     <p class="folio-kicker">Selected work</p>
-                    <h2>Things I’ve built.</h2>
+                    <component :is="sectionTag('Project')">{{
+                        sectionHeading('Project', 'Projects by Lakshitha Perera', 'Things I’ve built.')
+                    }}</component>
                     <div class="folio-filters" role="tablist" aria-label="Project filters">
                         <button
                             v-for="filter in showcaseFilters"
@@ -187,16 +248,14 @@
                         </button>
                     </div>
                     <div class="work-grid">
-                        <button
+                        <router-link
                             v-for="project in visibleShowcase"
                             :key="project.id"
                             class="work-card"
-                            type="button"
-                            :class="{ 'is-active': caseId === project.id }"
-                            @click="openProject(project.id)"
+                            :to="'/projects/' + project.id"
                         >
                             <div class="work-card-media">
-                                <img :src="project.image" :alt="project.title" />
+                                <img :src="project.image" :alt="project.title + ' by Lakshitha Perera'" />
                             </div>
                             <div class="work-card-body">
                                 <small>{{ project.overline }}</small>
@@ -204,7 +263,7 @@
                                 <p>{{ project.solution }}</p>
                                 <span class="work-card-cta">View case study <i class="bx bx-right-arrow-alt"></i></span>
                             </div>
-                        </button>
+                        </router-link>
                     </div>
                     <p v-if="github" class="work-more">
                         <a :href="profile.github.profile" target="_blank" rel="noopener">@{{ profile.github.username }}</a>
@@ -213,9 +272,33 @@
                     </p>
                 </section>
 
+                <section id="publications" class="folio-section">
+                    <p class="folio-kicker">Publications</p>
+                    <component :is="sectionTag('Publications')">{{
+                        sectionHeading('Publications', 'Publications by Lakshitha Perera', 'Writing and research.')
+                    }}</component>
+                    <p class="folio-lead">Research and educational work published under the name Lakshitha Perera.</p>
+                    <div class="edu-grid">
+                        <router-link
+                            v-for="item in publications"
+                            :key="item.id"
+                            class="edu-card pub-card"
+                            :to="'/publications/' + item.id"
+                        >
+                            <span class="folio-when">{{ item.year }} · {{ item.type }}</span>
+                            <h3>{{ item.title }}</h3>
+                            <p>Author: {{ item.authors.join(', ') }}</p>
+                            <p>{{ item.description }}</p>
+                            <p v-if="item.venue">{{ item.venue }}</p>
+                        </router-link>
+                    </div>
+                </section>
+
                 <section id="skills" class="folio-section">
                     <p class="folio-kicker">How I work</p>
-                    <h2>Tools that have actually shown up in the work.</h2>
+                    <component :is="sectionTag('Skills')">{{
+                        sectionHeading('Skills', 'Skills — Lakshitha Perera', 'Tools that have actually shown up in the work.')
+                    }}</component>
                     <div class="skill-bands">
                         <div v-for="band in skillMountains" :key="band.id" class="skill-band">
                             <h3>{{ band.label }}</h3>
@@ -231,7 +314,9 @@
 
                 <section id="education" class="folio-section">
                     <p class="folio-kicker">Knowledge campus</p>
-                    <h2>Education, competitions, community.</h2>
+                    <component :is="sectionTag('Education')">{{
+                        sectionHeading('Education', 'Education — Lakshitha Perera', 'Education, competitions, community.')
+                    }}</component>
                     <div class="edu-grid">
                         <article v-for="entry in education" :key="entry.id" class="edu-card">
                             <span class="folio-when">{{ entry.period }}</span>
@@ -263,7 +348,9 @@
 
                 <section id="contact" class="folio-section">
                     <p class="folio-kicker">Contact</p>
-                    <h2>{{ profile.contact.heading }}</h2>
+                    <component :is="sectionTag('Contact')">{{
+                        sectionHeading('Contact', 'Contact Lakshitha Perera', profile.contact.heading)
+                    }}</component>
                     <p class="folio-lead">{{ profile.contact.body }} {{ profile.contact.invite }}</p>
                     <div class="folio-row">
                         <button class="folio-btn folio-btn-lime" type="button" @click="focusForm">Send Message</button>
@@ -284,11 +371,21 @@
                     <div class="contact-channels">
                         <a v-for="item in profile.socials" :key="item.id" :href="item.url" target="_blank" rel="noopener">{{ item.title }}</a>
                     </div>
+                    <nav class="folio-sitelinks" aria-label="Portfolio pages">
+                        <router-link to="/">Home</router-link>
+                        <router-link to="/about">About</router-link>
+                        <router-link to="/experience">Experience</router-link>
+                        <router-link to="/projects">Projects</router-link>
+                        <router-link to="/publications">Publications</router-link>
+                        <router-link to="/education">Education</router-link>
+                        <router-link to="/contact">Contact</router-link>
+                    </nav>
                     <div class="folio-legal">
                         <span>All rights reserved</span>
                         <span>© {{ year }} {{ profile.name }}</span>
                     </div>
                 </section>
+                </template>
             </main>
         </div>
     </div>
@@ -300,28 +397,31 @@ import experience from '@/data/experience';
 import { education, awards, activities } from '@/data/education';
 import skillMountains from '@/data/skills';
 import { projects, showcaseOrder } from '@/data/projects';
+import publications from '@/data/publications';
+import { resolveSeo } from '@/data/seo';
+import { applySeo } from '@/seo/apply';
 import emailjs, { init } from 'emailjs-com';
 import ProfileCard from '@/components/folio/ProfileCard.vue';
 
 init('user_zdO7SqNAzUeW1bl8KtMhn');
 
 const SECTION_ROUTES = {
-    AboutMe: 'home',
+    Home: 'home',
     About: 'about',
     Experience: 'experience',
     Project: 'work',
+    Publications: 'publications',
     Skills: 'skills',
     Education: 'education',
     Contact: 'contact',
-    Ai: 'work',
-    Devops: 'skills',
 };
 
 const ROUTE_BY_SECTION = {
-    home: '/home',
+    home: '/',
     about: '/about',
     experience: '/experience',
-    work: '/Project',
+    work: '/projects',
+    publications: '/publications',
     skills: '/skills',
     education: '/education',
     contact: '/contact',
@@ -338,12 +438,12 @@ export default {
             awards,
             activities,
             skillMountains,
+            publications,
             ready: false,
             isLight: false,
             activeId: 'home',
             aboutTab: 'who',
             projectFilter: 'All',
-            caseId: null,
             github: null,
             sending: false,
             formStatus: null,
@@ -357,6 +457,7 @@ export default {
                 { id: 'about', label: 'About', icon: 'bx-user' },
                 { id: 'experience', label: 'Experience', icon: 'bx-briefcase' },
                 { id: 'work', label: 'Work', icon: 'bx-grid-alt' },
+                { id: 'publications', label: 'Writing', icon: 'bx-news' },
                 { id: 'skills', label: 'Skills', icon: 'bx-code-alt' },
                 { id: 'education', label: 'Education', icon: 'bx-book' },
                 { id: 'contact', label: 'Contact', icon: 'bx-envelope' },
@@ -391,17 +492,39 @@ export default {
         visibleShowcase() {
             return this.showcaseProjects.filter((p) => this.projectFilter === 'All' || p.category === this.projectFilter);
         },
-        activeProject() {
-            return this.caseId ? projects.find((p) => p.id === this.caseId) : null;
+        routeProject() {
+            if (this.$route.name !== 'ProjectDetail') return null;
+            return projects.find((item) => item.id === this.$route.params.id) || null;
+        },
+        routePublication() {
+            if (this.$route.name !== 'PublicationDetail') return null;
+            return publications.find((item) => item.id === this.$route.params.id) || null;
+        },
+        profileNameTag() {
+            return this.$route.name === 'Home' ? 'h1' : 'p';
+        },
+        isDetailRoute() {
+            return this.$route.name === 'ProjectDetail' || this.$route.name === 'PublicationDetail';
         },
     },
     watch: {
-        '$route.name'() {
+        $route() {
+            this.applyPageSeo();
             this.scrollFromRoute(true);
+        },
+        isDetailRoute(now, was) {
+            if (was && !now) {
+                this.$nextTick(() => {
+                    this.observers.forEach((obs) => obs.disconnect());
+                    this.observers = [];
+                    this.bindSpy();
+                    this.bindRise();
+                });
+            }
         },
     },
     mounted() {
-        document.title = profile.seoTitle;
+        this.applyPageSeo();
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         this.isLight = localStorage.getItem('folio-theme') === 'light';
         document.documentElement.classList.toggle('theme-light', this.isLight);
@@ -411,12 +534,12 @@ export default {
         this.bindTerrain();
         this.scrollFromRoute(false);
         this.loadGithub();
-        window.addEventListener('keydown', this.onKey);
         this.loaderTimer = setTimeout(() => {
             this.ready = true;
             this.$nextTick(() => {
                 this.scrollFromRoute(false);
                 this.updateTimeline();
+                document.dispatchEvent(new Event('folio-rendered'));
             });
         }, reduce ? 0 : 640);
     },
@@ -425,7 +548,6 @@ export default {
         cancelAnimationFrame(this.timelineRaf);
         cancelAnimationFrame(this.terrainRaf);
         this.observers.forEach((obs) => obs.disconnect());
-        window.removeEventListener('keydown', this.onKey);
         window.removeEventListener('scroll', this.onTimelineScroll);
         window.removeEventListener('resize', this.onTimelineScroll);
         window.removeEventListener('scroll', this.onTerrainScroll);
@@ -436,11 +558,27 @@ export default {
             document.documentElement.classList.toggle('theme-light', this.isLight);
             localStorage.setItem('folio-theme', this.isLight ? 'light' : 'dark');
         },
+        applyPageSeo() {
+            applySeo(resolveSeo(this.$route));
+        },
+        sectionTag(name) {
+            return this.$route.name === name ? 'h1' : 'h2';
+        },
+        sectionHeading(name, pageText, defaultText) {
+            return this.$route.name === name ? pageText : defaultText;
+        },
         go(id) {
             this.activeId = id;
             this.spyLock = true;
-            this.scrollToSection(id, true);
             const path = ROUTE_BY_SECTION[id];
+            if (this.isDetailRoute && path) {
+                this.$router.push(path);
+                setTimeout(() => {
+                    this.spyLock = false;
+                }, 700);
+                return;
+            }
+            this.scrollToSection(id, true);
             if (path && this.$route.path !== path) this.$router.replace(path);
             setTimeout(() => {
                 this.spyLock = false;
@@ -457,6 +595,16 @@ export default {
             if (el) el.scrollIntoView({ behavior, block: 'start' });
         },
         scrollFromRoute(smooth) {
+            if (this.$route.name === 'ProjectDetail') {
+                this.activeId = 'work';
+                window.scrollTo({ top: 0, behavior: 'auto' });
+                return;
+            }
+            if (this.$route.name === 'PublicationDetail') {
+                this.activeId = 'publications';
+                window.scrollTo({ top: 0, behavior: 'auto' });
+                return;
+            }
             const id = SECTION_ROUTES[this.$route.name] || 'home';
             this.activeId = id;
             this.$nextTick(() => this.scrollToSection(id, smooth));
@@ -526,7 +674,7 @@ export default {
             window.addEventListener('resize', this.onTimelineScroll);
         },
         bindSpy() {
-            const ids = ['home', 'about', 'experience', 'work', 'skills', 'education', 'contact'];
+            const ids = ['home', 'about', 'experience', 'work', 'publications', 'skills', 'education', 'contact'];
             const obs = new IntersectionObserver(
                 (entries) => {
                     if (this.spyLock) return;
@@ -547,9 +695,6 @@ export default {
             });
             this.observers.push(obs);
         },
-        openProject(id) {
-            this.caseId = id;
-        },
         focusForm() {
             const input = this.$refs.nameInput;
             if (input) input.focus();
@@ -568,9 +713,6 @@ export default {
                 };
             }
             this.sending = false;
-        },
-        onKey(e) {
-            if (e.key === 'Escape') this.caseId = null;
         },
         async loadGithub() {
             this.github = { publicRepos: profile.github.fallbackPublicRepos };
