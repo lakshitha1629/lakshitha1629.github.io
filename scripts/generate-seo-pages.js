@@ -211,7 +211,6 @@ const SECTION_PAGES = [
 <h2>About</h2>
 <p>I’m Lakshitha, an Associate Tech Lead and full-stack software engineer based in Nugegoda, Sri Lanka. I’ve spent 6+ years delivering enterprise applications across fintech, SaaS, streaming, e-commerce and AI/ML.</p>
 <h2>Experience</h2>
-<p><strong>Associate Tech Lead / Software Engineer — DirectFN</strong> (Jul 2022 — Present). Enterprise fintech applications with C#/.NET and Oracle PL/SQL.</p>
 <p><strong>Full Stack Developer — ProjectXSpace</strong> (Aug 2020 — Apr 2022). E-commerce, vehicle-routing and recommendation products.</p>
 <p><strong>Software Engineer — BevyLabs</strong> (Mar 2020 — Sep 2020). Web, mobile and computer-vision products.</p>
 <p><strong>Software Engineer Intern — Mobitel</strong> (Sep 2019 — Feb 2020).</p>

@@ -1,25 +1,25 @@
 export const experience = [
-    {
-        id: 'directfn',
-        company: 'DirectFN',
-        role: 'Associate Tech Lead / Software Engineer',
-        tab: 'DirectFN',
-        location: 'Malabe, Sri Lanka',
-        workStart: 'Jul 2022',
-        workUntil: 'Present',
-        period: 'Jul 2022 — Present',
-        url: 'https://www.directfn.com/',
-        current: true,
-        summary:
-            'Progressed from Software Engineer to Associate Tech Lead while delivering enterprise fintech applications and client-specific solutions with C#/.NET and Oracle PL/SQL.',
-        responsibilities: [
-            'Develop and maintain application components using C#/.NET and complex Oracle PL/SQL structures for reliable, scalable business workflows',
-            'Work in Scrum-based delivery with Jira and formal SDLC practices, including onsite client collaboration',
-            'Researched code obfuscation and security upgrades, and built project-build tooling and internal utilities to improve engineering efficiency',
-        ],
-        technologies: ['C# / .NET', 'Oracle PL/SQL', 'Fintech'],
-        projects: [],
-    },
+    // {
+    //     id: 'directfn',
+    //     company: 'DirectFN',
+    //     role: 'Associate Tech Lead / Software Engineer',
+    //     tab: 'DirectFN',
+    //     location: 'Malabe, Sri Lanka',
+    //     workStart: 'Jul 2022',
+    //     workUntil: 'Present',
+    //     period: 'Jul 2022 — Present',
+    //     url: 'https://www.directfn.com/',
+    //     current: true,
+    //     summary:
+    //         'Progressed from Software Engineer to Associate Tech Lead while delivering enterprise fintech applications and client-specific solutions with C#/.NET and Oracle PL/SQL.',
+    //     responsibilities: [
+    //         'Develop and maintain application components using C#/.NET and complex Oracle PL/SQL structures for reliable, scalable business workflows',
+    //         'Work in Scrum-based delivery with Jira and formal SDLC practices, including onsite client collaboration',
+    //         'Researched code obfuscation and security upgrades, and built project-build tooling and internal utilities to improve engineering efficiency',
+    //     ],
+    //     technologies: ['C# / .NET', 'Oracle PL/SQL', 'Fintech'],
+    //     projects: [],
+    // },
     {
         id: 'projectxspace',
         company: 'ProjectXSpace',
