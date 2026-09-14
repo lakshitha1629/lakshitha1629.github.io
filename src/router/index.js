@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Portfolio from './../views/Portfolio.vue';
+import Folio from './../views/Folio.vue';
 
 const routes = [
     {
@@ -9,22 +9,59 @@ const routes = [
     {
         path: '/home',
         name: 'AboutMe',
-        component: Portfolio,
+        component: Folio,
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: Folio,
     },
     {
         path: '/experience',
         name: 'Experience',
-        component: Portfolio,
+        component: Folio,
     },
     {
         path: '/Project',
         name: 'Project',
-        component: Portfolio,
+        component: Folio,
+    },
+    {
+        path: '/work',
+        redirect: '/Project',
+    },
+    {
+        path: '/projects',
+        redirect: '/Project',
     },
     {
         path: '/contact',
         name: 'Contact',
-        component: Portfolio,
+        component: Folio,
+    },
+    {
+        path: '/skills',
+        name: 'Skills',
+        component: Folio,
+    },
+    {
+        path: '/ai',
+        name: 'Ai',
+        component: Folio,
+    },
+    {
+        path: '/engineering',
+        name: 'Devops',
+        component: Folio,
+    },
+    {
+        path: '/education',
+        name: 'Education',
+        component: Folio,
+    },
+    {
+        path: '/future',
+        redirect: '/about',
     },
     {
         path: '/:pathMatch(.*)*',
@@ -36,12 +73,8 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    scrollBehavior(to, from, savedPosition) {
-        if (!savedPosition) {
-            return { left: 0, top: 0 };
-        } else {
-            return savedPosition;
-        }
+    scrollBehavior() {
+        return false;
     },
 });
 

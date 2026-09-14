@@ -1,11 +1,11 @@
 module.exports = {
     publicPath: '/',
     pwa: {
-        name: 'Lakshitha1629',
+        name: 'Lakshitha Perera',
         description:
-            'Lakshitha Perera is a passionate individual and a technophiles obsessed with the latest technologies. I‘ve always been a great problem solver and creative. I prefer to find new solutions using the latest approaches and systems. I am both driven and self-motivated, and I am constantly experimenting with new technologies and techniques.',
-        themeColor: '#64ffda',
-        msTileColor: '#0a192f',
+            'Associate Tech Lead and full-stack software engineer with 6+ years shipping enterprise applications across fintech, SaaS, streaming, e-commerce and AI/ML.',
+        themeColor: '#c6f431',
+        msTileColor: '#0b0b0b',
         workboxOptions: {
             skipWaiting: true,
             exclude: [/_redirects/],
