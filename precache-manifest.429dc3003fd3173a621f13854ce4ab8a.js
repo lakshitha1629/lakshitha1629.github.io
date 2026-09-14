@@ -4,31 +4,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/404.html"
   },
   {
-    "revision": "07d1e15005154c1a0d70",
-    "url": "/css/app.016fa3a0.css"
+    "revision": "5686a02a9baa111499dd",
+    "url": "/css/app.966be92c.css"
   },
   {
-    "revision": "07d1e15005154c1a0d70",
-    "url": "/css/app.016fa3a0.css.map"
+    "revision": "5686a02a9baa111499dd",
+    "url": "/css/app.966be92c.css.map"
   },
   {
-    "revision": "0ae5614254cff839e6f8",
+    "revision": "395858e1bb5d7ee66217",
     "url": "/css/chunk-eb9c8bce.2332c969.css"
   },
   {
-    "revision": "0ae5614254cff839e6f8",
+    "revision": "395858e1bb5d7ee66217",
     "url": "/css/chunk-eb9c8bce.2332c969.css.map"
   },
   {
-    "revision": "a40539edf7fe855bb570",
+    "revision": "25c09a796f14b7e67ad6",
     "url": "/css/chunk-vendors.a82c9d91.css"
   },
   {
-    "revision": "a40539edf7fe855bb570",
+    "revision": "25c09a796f14b7e67ad6",
     "url": "/css/chunk-vendors.a82c9d91.css.map"
   },
   {
-    "revision": "e4a32b48d558972309faf565265f7775",
+    "revision": "80d904e5bd9b86839e3fbe6bd27f20aa",
     "url": "/favicon.ico"
   },
   {
@@ -52,40 +52,60 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/boxicons.b0bb9677.svg"
   },
   {
-    "revision": "bdd0fee09c720e65fe6c51f971eaf6ad",
+    "revision": "7d7daf0e10adb6d23af64bce185527e6",
+    "url": "/img/icons/android-chrome-192x192.png"
+  },
+  {
+    "revision": "bf2d2070f5b8dbb9ce2c9b362c9f828b",
+    "url": "/img/icons/android-chrome-512x512.png"
+  },
+  {
+    "revision": "c94a85f40d5fb841886c438d4f3f51db",
+    "url": "/img/icons/apple-touch-icon-180x180.png"
+  },
+  {
+    "revision": "80d904e5bd9b86839e3fbe6bd27f20aa",
     "url": "/img/icons/favicon-16x16.ico"
   },
   {
-    "revision": "c8049e9530a2535fa382615292056c71",
+    "revision": "992f79a56696413584f6309bec967d36",
+    "url": "/img/icons/favicon-16x16.png"
+  },
+  {
+    "revision": "80d904e5bd9b86839e3fbe6bd27f20aa",
     "url": "/img/icons/favicon-32x32.ico"
   },
   {
-    "revision": "65d9783da1b52e069585508c37c943a2",
+    "revision": "658362be6d0700c3c60b83042971c771",
+    "url": "/img/icons/favicon-32x32.png"
+  },
+  {
+    "revision": "64a77fa0d194c5b96b0b825f02db1488",
     "url": "/index.html"
   },
   {
-    "revision": "07d1e15005154c1a0d70",
-    "url": "/js/app.48b07093.js"
+    "revision": "5686a02a9baa111499dd",
+    "url": "/js/app.1a99d369.js"
   },
   {
-    "revision": "07d1e15005154c1a0d70",
-    "url": "/js/app.48b07093.js.map"
+    "revision": "5686a02a9baa111499dd",
+    "url": "/js/app.1a99d369.js.map"
   },
   {
-    "revision": "0ae5614254cff839e6f8",
-    "url": "/js/chunk-eb9c8bce.2c030018.js"
+    "revision": "395858e1bb5d7ee66217",
+    "url": "/js/chunk-eb9c8bce.b12ea2c2.js"
   },
   {
-    "revision": "0ae5614254cff839e6f8",
-    "url": "/js/chunk-eb9c8bce.2c030018.js.map"
+    "revision": "395858e1bb5d7ee66217",
+    "url": "/js/chunk-eb9c8bce.b12ea2c2.js.map"
   },
   {
-    "revision": "a40539edf7fe855bb570",
-    "url": "/js/chunk-vendors.6084cbb7.js"
+    "revision": "25c09a796f14b7e67ad6",
+    "url": "/js/chunk-vendors.26c159d9.js"
   },
   {
-    "revision": "a40539edf7fe855bb570",
-    "url": "/js/chunk-vendors.6084cbb7.js.map"
+    "revision": "25c09a796f14b7e67ad6",
+    "url": "/js/chunk-vendors.26c159d9.js.map"
   },
   {
     "revision": "2c29c9f148a758d1c367fa7230ee8ede",
@@ -94,6 +114,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5d82b5521a6fc98e01fcb8f83f646620",
     "url": "/manifest.json"
+  },
+  {
+    "revision": "8060bb9b416914fbb697eca4943e794b",
+    "url": "/media/hero-terrain.png"
   },
   {
     "revision": "2d4cae56849c62a465e9fc109dc47232",
