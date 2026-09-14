@@ -5,6 +5,7 @@
                 <div v-if="!project" key="default" class="folio-card-default">
                     <div class="folio-card-media">
                         <img :src="profile.photo" :alt="profile.photoAlt" />
+                        <span class="folio-card-sign" aria-hidden="true">{{ profile.shortName }}</span>
                     </div>
                     <div class="folio-card-top">
                         <div class="folio-card-socials">
@@ -20,6 +21,14 @@
                                 <i class="bx" :class="item.icon"></i>
                                 <span class="social-tip">{{ item.title }}</span>
                             </a>
+                            <a
+                                :href="'mailto:' + profile.email"
+                                aria-label="Email"
+                                :style="{ '--d': profile.socials.length }"
+                            >
+                                <i class="bx bx-envelope"></i>
+                                <span class="social-tip">Email</span>
+                            </a>
                         </div>
                     </div>
                     <div class="folio-card-info">
@@ -31,7 +40,12 @@
                         </div>
                         <div class="info-actions">
                             <button class="folio-btn folio-btn-lime" type="button" @click="$emit('talk')">Let’s talk</button>
-                            <a class="folio-btn folio-btn-ghost" :href="profile.resume.local" download>
+                            <a
+                                class="folio-btn folio-btn-ghost"
+                                :href="profile.resume.url"
+                                target="_blank"
+                                rel="noopener"
+                            >
                                 <i class="bx bx-download"></i> Download CV
                             </a>
                         </div>

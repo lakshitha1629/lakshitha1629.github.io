@@ -2,6 +2,10 @@
     <div class="folio" :class="{ 'is-ready': ready }">
         <a class="folio-skip" href="#about">Skip to content</a>
         <div class="folio-grain" aria-hidden="true"></div>
+        <div class="folio-glow" aria-hidden="true"></div>
+        <div ref="terrain" class="folio-terrain" aria-hidden="true">
+            <img src="/media/hero-terrain.png" alt="" />
+        </div>
 
         <div class="folio-loader" :class="{ 'is-done': ready }" role="status" aria-live="polite">
             <div class="folio-loader-inner">
@@ -37,18 +41,20 @@
                 <section id="home" class="folio-cover">
                     <p class="hero-kicker reveal d1"><i class="hero-kicker-dot"></i> Full-Stack Engineer · Tech Lead · Problem Solver</p>
 
-                    <h1 class="hero-title reveal d2">
-                        I’m building
-                        <em class="mark">software &amp; systems</em>
-                        people remember
+                    <h1 class="hero-title">
+                        <span class="hero-title-line reveal d1">I’m building</span>
+                        <em class="mark reveal d2">software &amp; systems</em>
+                        <span class="hero-title-line reveal d3">people remember</span>
                     </h1>
 
-                    <p class="hero-desc reveal d2">{{ profile.headline }} Passionate about solving real-world problems with technology.</p>
+                    <p class="hero-desc reveal d3">{{ profile.headline }} Passionate about solving real-world problems with technology.</p>
 
-                    <div class="hero-stats reveal d3">
+                    <div class="hero-stats reveal d4">
                         <template v-for="(stat, index) in profile.stats" :key="stat.label">
                             <div class="hero-stat">
-                                <i class="bx hero-stat-icon" :class="stat.icon"></i>
+                                <span class="hero-stat-icon-wrap" aria-hidden="true">
+                                    <i class="bx" :class="stat.icon"></i>
+                                </span>
                                 <div class="hero-stat-text">
                                     <strong>{{ stat.value }}</strong>
                                     <span>{{ stat.label }}</span>
@@ -58,36 +64,48 @@
                         </template>
                     </div>
 
-                    <div class="hero-visual reveal d4" aria-hidden="true">
-                        <svg class="hero-ribbon" viewBox="0 0 520 200" fill="none">
-                            <path d="M8 142C72 28 148 176 236 78c70-78 118 86 196 18 52-46 62-8 78 22" />
-                        </svg>
-                        <div class="hero-visual-card">
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="hero-orbit reveal d4">
+                            <svg class="hero-orbit-ring" viewBox="0 0 220 220" fill="none">
+                                <circle cx="110" cy="110" r="96" />
+                            </svg>
+                            <p class="hero-orbit-copy">
+                                <span>Ideas</span>
+                                <span>→ Products</span>
+                                <span>→ Impact.</span>
+                            </p>
+                        </div>
+                        <div class="hero-visual-card reveal d5">
                             <img :src="profile.avatar" alt="" />
                             <span>Let’s build something great!</span>
+                            <span class="hero-visual-spark"></span>
                         </div>
                     </div>
 
-                    <div class="hero-techbar reveal d4">
-                        <span class="hero-techbar-label">Tech I work with</span>
-                        <div class="hero-techbar-pills">
-                            <div class="hero-techbar-track">
-                                <span v-for="(tech, index) in heroTechLoop" :key="index">{{ tech }}</span>
+                    <div class="hero-bottom">
+                        <div class="hero-techbar reveal d5">
+                            <span class="hero-techbar-label">Tech I work with</span>
+                            <div class="hero-techbar-pills">
+                                <div class="hero-techbar-track">
+                                    <span v-for="(tech, index) in heroTechLoop" :key="index">{{ tech }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="hero-foot reveal d5">
-                        <p class="hero-scroll"><i class="bx bx-mouse"></i> Scroll to explore</p>
-                        <p class="hero-quote-mini">“Technology is more powerful when it brings people together.”</p>
+                        <div class="hero-foot reveal d5">
+                            <button class="hero-scroll" type="button" @click="go('about')">
+                                <i class="bx bx-mouse"></i> Scroll to explore
+                            </button>
+                            <p class="hero-quote-mini">“Technology is more powerful when it brings people together.”</p>
+                        </div>
                     </div>
                 </section>
 
                 <section id="about" class="folio-section">
-                    <p class="folio-kicker">About</p>
-                    <h2>Who I am, and how I work.</h2>
-                    <p class="folio-lead">{{ profile.headline }} Based in {{ profile.location }}.</p>
-                    <div class="folio-tabs" role="tablist" aria-label="About">
+                    <p class="folio-kicker" data-rise>About</p>
+                    <h2 data-rise>Who I am, and how I work.</h2>
+                    <p class="folio-lead" data-rise>{{ profile.headline }} Based in {{ profile.location }}.</p>
+                    <div class="folio-tabs" role="tablist" aria-label="About" data-rise>
                         <button
                             v-for="tab in aboutTabs"
                             :key="tab.id"
@@ -98,11 +116,11 @@
                             {{ tab.label }}
                         </button>
                     </div>
-                    <p class="folio-about-copy">{{ profile.about[aboutTab] }}</p>
-                    <div class="folio-chips">
+                    <p class="folio-about-copy" data-rise>{{ profile.about[aboutTab] }}</p>
+                    <div class="folio-chips" data-rise>
                         <span v-for="item in profile.about.identity" :key="item">{{ item }}</span>
                     </div>
-                    <div class="folio-services">
+                    <div class="folio-services" data-rise>
                         <article v-for="service in profile.services" :key="service.title">
                             <h3>{{ service.title }}</h3>
                             <p>{{ service.description }}</p>
@@ -344,6 +362,7 @@ export default {
                 { id: 'contact', label: 'Contact', icon: 'bx-envelope' },
             ],
             heroTech: ['C# / .NET', 'Angular', 'React', 'Python', 'AI / ML', 'Oracle PL/SQL', 'Fintech', 'System Design'],
+            terrainRaf: 0,
         };
     },
     computed: {
@@ -389,6 +408,7 @@ export default {
         this.bindSpy();
         this.bindRise();
         this.bindTimeline();
+        this.bindTerrain();
         this.scrollFromRoute(false);
         this.loadGithub();
         window.addEventListener('keydown', this.onKey);
@@ -403,10 +423,12 @@ export default {
     beforeUnmount() {
         clearTimeout(this.loaderTimer);
         cancelAnimationFrame(this.timelineRaf);
+        cancelAnimationFrame(this.terrainRaf);
         this.observers.forEach((obs) => obs.disconnect());
         window.removeEventListener('keydown', this.onKey);
         window.removeEventListener('scroll', this.onTimelineScroll);
         window.removeEventListener('resize', this.onTimelineScroll);
+        window.removeEventListener('scroll', this.onTerrainScroll);
     },
     methods: {
         toggleTheme() {
@@ -473,6 +495,23 @@ export default {
             const pivot = window.innerHeight * 0.42;
             const progress = Math.min(1, Math.max(0, (pivot - rect.top) / Math.max(rect.height, 1)));
             el.style.setProperty('--timeline-progress', progress.toFixed(4));
+        },
+        bindTerrain() {
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduce) return;
+            this.onTerrainScroll();
+            window.addEventListener('scroll', this.onTerrainScroll, { passive: true });
+        },
+        onTerrainScroll() {
+            if (this.terrainRaf) return;
+            this.terrainRaf = requestAnimationFrame(() => {
+                this.terrainRaf = 0;
+                const el = this.$refs.terrain;
+                if (!el) return;
+                const y = Math.min(window.scrollY, 520);
+                el.style.transform = `translate3d(0, ${y * 0.22}px, 0)`;
+                el.style.opacity = String(Math.max(0, 1 - y / 680));
+            });
         },
         bindTimeline() {
             const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

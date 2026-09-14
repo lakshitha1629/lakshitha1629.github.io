@@ -35,6 +35,7 @@ export const github = {
 
 export const resume = {
     local: '/resume/Lakshitha-Perera-Resume.pdf',
+    url: 'https://drive.google.com/file/d/1QePsPyedxINA9ULzJid7MSU2y_K80tf1/view?usp=drive_link',
 };
 
 export default { email, socials, github, resume };
