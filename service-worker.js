@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.c6254540eb4f14a6caf755c82fc618a3.js"
+  "/precache-manifest.d822d7f27a0fcfe2f14ca3706e924173.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "lakshitha-perera-portfolio"});
