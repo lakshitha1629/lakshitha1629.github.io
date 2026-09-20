@@ -4,12 +4,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/.nojekyll"
   },
   {
-    "revision": "aa23c222ed6e7c293ecd",
-    "url": "/css/app.a188f924.css"
+    "revision": "49ccb843a4da3b2255e0",
+    "url": "/css/app.9d7425ff.css"
   },
   {
-    "revision": "aa23c222ed6e7c293ecd",
-    "url": "/css/app.a188f924.css.map"
+    "revision": "49ccb843a4da3b2255e0",
+    "url": "/css/app.9d7425ff.css.map"
   },
   {
     "revision": "0466e14158db2395e0b3",
@@ -60,11 +60,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/icons/favicon-32x32.ico"
   },
   {
-    "revision": "aa23c222ed6e7c293ecd",
+    "revision": "49ccb843a4da3b2255e0",
     "url": "/js/app.6b94644c.js"
   },
   {
-    "revision": "aa23c222ed6e7c293ecd",
+    "revision": "49ccb843a4da3b2255e0",
     "url": "/js/app.6b94644c.js.map"
   },
   {
