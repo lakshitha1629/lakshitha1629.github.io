@@ -2,7 +2,7 @@ export const experience = [
     // {
     //     id: 'directfn',
     //     company: 'DirectFN',
-    //     role: 'Associate Tech Lead / Software Engineer',
+    //     role: 'Tech Lead / Software Engineer',
     //     tab: 'DirectFN',
     //     location: 'Malabe, Sri Lanka',
     //     workStart: 'Jul 2022',
@@ -11,7 +11,7 @@ export const experience = [
     //     url: 'https://www.directfn.com/',
     //     current: true,
     //     summary:
-    //         'Progressed from Software Engineer to Associate Tech Lead while delivering enterprise fintech applications and client-specific solutions with C#/.NET and Oracle PL/SQL.',
+    //         'Progressed from Software Engineer to Tech Lead while delivering enterprise fintech applications and client-specific solutions with C#/.NET and Oracle PL/SQL.',
     //     responsibilities: [
     //         'Develop and maintain application components using C#/.NET and complex Oracle PL/SQL structures for reliable, scalable business workflows',
     //         'Work in Scrum-based delivery with Jira and formal SDLC practices, including onsite client collaboration',

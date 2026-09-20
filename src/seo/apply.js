@@ -10,7 +10,7 @@ export function applySeo(page) {
     setMeta('property', 'og:description', page.description);
     setMeta('property', 'og:url', page.url);
     setMeta('property', 'og:image', page.image);
-    setMeta('property', 'og:image:alt', 'Lakshitha Perera, Associate Tech Lead and Full-Stack Engineer');
+    setMeta('property', 'og:image:alt', 'Lakshitha Perera, Tech Lead and Full-Stack Engineer');
     setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', page.title);
     setMeta('name', 'twitter:description', page.description);

@@ -43,7 +43,7 @@
                     <p class="folio-kicker">{{ routeProject.overline }}</p>
                     <h1>{{ routeProject.title }}</h1>
                     <p class="folio-lead">
-                        A project by Lakshitha Perera, Associate Tech Lead, Full-Stack Engineer and AI Developer based in Sri
+                        A project by Lakshitha Perera, Tech Lead, Full-Stack Engineer and AI Developer based in Sri
                         Lanka.
                     </p>
                     <img
@@ -101,7 +101,7 @@
                         <em class="mark reveal d2">software that works.</em>
                     </p>
 
-                    <p class="hero-desc reveal d3">Associate Tech Lead with experience building full-stack solutions across fintech, SaaS, streaming, and AI. Focused on creating reliable, scalable products that solve real-world problems.</p>
+                    <p class="hero-desc reveal d3">Tech Lead with experience building full-stack solutions across fintech, SaaS, streaming, and AI. Focused on creating reliable, scalable products that solve real-world problems.</p>
 
                     <div class="hero-stats reveal d4">
                         <template v-for="(stat, index) in profile.stats" :key="stat.label">

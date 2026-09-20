@@ -18,7 +18,7 @@ module.exports = {
     pwa: {
         name: 'Lakshitha Perera',
         description:
-            'Lakshitha Perera is an Associate Tech Lead and Full-Stack Engineer from Sri Lanka specializing in AI, scalable web applications, cloud systems and software engineering.',
+            'Lakshitha Perera is an Tech Lead and Full-Stack Engineer from Sri Lanka specializing in AI, scalable web applications, cloud systems and software engineering.',
         themeColor: '#c6f431',
         msTileColor: '#0b0b0b',
         workboxOptions: {

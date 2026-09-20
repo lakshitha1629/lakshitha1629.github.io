@@ -4,9 +4,9 @@ import { socials } from './socials';
 
 export const SITE_ORIGIN = 'https://lakshitha1629.github.io';
 export const OG_IMAGE = `${SITE_ORIGIN}/profile/lakshitha.png`;
-export const DEFAULT_TITLE = 'Lakshitha Perera | Associate Tech Lead & Full-Stack Engineer';
+export const DEFAULT_TITLE = 'Lakshitha Perera | Tech Lead & Full-Stack Engineer';
 export const DEFAULT_DESCRIPTION =
-    'Lakshitha Perera, Associate Tech Lead and full-stack software engineer in Sri Lanka, builds scalable fintech, AI and cloud products. Explore his work and skills.';
+    'Lakshitha Perera, Tech Lead and full-stack software engineer in Sri Lanka, builds scalable fintech, AI and cloud products. Explore his work and skills.';
 export const PERSON_ID = `${SITE_ORIGIN}/#lakshitha-perera`;
 export const PROFILE_ID = `${SITE_ORIGIN}/#profile`;
 
@@ -24,8 +24,8 @@ export function personEntity() {
         name: 'Lakshitha Perera',
         url: `${SITE_ORIGIN}/`,
         image: OG_IMAGE,
-        jobTitle: 'Associate Tech Lead',
-        description: 'Associate Tech Lead, Full-Stack Engineer and AI Developer from Sri Lanka.',
+        jobTitle: 'Tech Lead',
+        description: 'Tech Lead, Full-Stack Engineer and AI Developer from Sri Lanka.',
         email: 'mailto:lakshitha1629@gmail.com',
         address: {
             '@type': 'PostalAddress',
@@ -73,17 +73,17 @@ export const sectionPages = {
     },
     About: {
         path: '/about',
-        title: 'About Lakshitha Perera | Associate Tech Lead & Full-Stack Engineer',
+        title: 'About Lakshitha Perera | Tech Lead & Full-Stack Engineer',
         description:
-            'About Lakshitha Perera — Associate Tech Lead, Full-Stack Engineer and AI Developer from Sri Lanka, working on fintech, SaaS, streaming and applied AI.',
+            'About Lakshitha Perera — Tech Lead, Full-Stack Engineer and AI Developer from Sri Lanka, working on fintech, SaaS, streaming and applied AI.',
         h1: 'About Lakshitha Perera',
         ogType: 'profile',
     },
     Experience: {
         path: '/experience',
-        title: 'Experience | Lakshitha Perera, Associate Tech Lead',
+        title: 'Experience | Lakshitha Perera, Tech Lead',
         description:
-            'Work experience of Lakshitha Perera: Associate Tech Lead at DirectFN, previously Full Stack Developer at ProjectXSpace, Software Engineer at BevyLabs, and intern at Mobitel.',
+            'Work experience of Lakshitha Perera: Tech Lead at DirectFN, previously Full Stack Developer at ProjectXSpace, Software Engineer at BevyLabs, and intern at Mobitel.',
         h1: 'Experience — Lakshitha Perera',
         ogType: 'profile',
     },
@@ -121,9 +121,9 @@ export const sectionPages = {
     },
     Contact: {
         path: '/contact',
-        title: 'Contact Lakshitha Perera | Associate Tech Lead',
+        title: 'Contact Lakshitha Perera | Tech Lead',
         description:
-            'Contact Lakshitha Perera — Associate Tech Lead and Full-Stack Engineer based in Sri Lanka. Open to conversations about software engineering, AI and product work.',
+            'Contact Lakshitha Perera — Tech Lead and Full-Stack Engineer based in Sri Lanka. Open to conversations about software engineering, AI and product work.',
         h1: 'Contact Lakshitha Perera',
         ogType: 'profile',
     },
@@ -131,7 +131,7 @@ export const sectionPages = {
 
 export function projectSeo(project) {
     const path = `/projects/${project.id}`;
-    const description = `${project.solution} Built by Lakshitha Perera, Associate Tech Lead and Full-Stack Engineer from Sri Lanka.`;
+    const description = `${project.solution} Built by Lakshitha Perera, Tech Lead and Full-Stack Engineer from Sri Lanka.`;
     return {
         path,
         title: `${project.title} | Lakshitha Perera`,
