@@ -1,3 +1,4 @@
+import { imageUrl } from './image';
 export const projectFilters = ['All', 'AI / ML', 'Backend', 'Web', 'Mobile'];
 
 // Only these have real screenshots to show off — keeps "Selected work" curated instead of a wall of placeholders.
@@ -501,6 +502,11 @@ export const projects = [
         demo: '',
     },
 ];
+
+projects.forEach(project => {
+    project.image = imageUrl(project.image);
+    if (project.images) project.images = project.images.map(imageUrl);
+});
 
 export const featuredProjects = projects.filter((project) => project.featured);
 export const archiveProjects = projects.filter((project) => !project.featured);

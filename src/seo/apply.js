@@ -21,8 +21,8 @@ export function applySeo(page) {
 }
 
 function setMeta(attr, key, content) {
-    if (!content) return;
     const selector = `meta[${attr}="${key}"]`;
+    if (!content) { document.head.querySelectorAll(selector).forEach(el => el.remove()); return; }
     let el = document.head.querySelector(selector);
     if (!el) {
         el = document.createElement('meta');
@@ -33,6 +33,7 @@ function setMeta(attr, key, content) {
 }
 
 function setCanonical(href) {
+    if (!href) { document.head.querySelectorAll('link[rel=canonical]').forEach(el => el.remove()); return; }
     let el = document.head.querySelector('link[rel="canonical"]');
     if (!el) {
         el = document.createElement('link');
@@ -43,7 +44,7 @@ function setCanonical(href) {
 }
 
 function setJsonLd(data) {
-    if (!data) return;
+    if (!data) { document.head.querySelectorAll('script[type="application/ld+json"]').forEach(el => el.remove()); return; }
     let el = document.head.querySelector('script[type="application/ld+json"]');
     if (!el) {
         el = document.createElement('script');

@@ -4,7 +4,7 @@
             <transition name="folio-card-fade" mode="out-in">
                 <div v-if="!project" key="default" class="folio-card-default">
                     <div class="folio-card-media">
-                        <img :src="profile.photo" :alt="profile.photoAlt" />
+                        <img fetchpriority="high" decoding="async" :src="profile.photo" :alt="profile.photoAlt" />
                         <span class="folio-card-sign" aria-hidden="true">{{ profile.shortName }}</span>
                     </div>
                     <div class="folio-card-top">

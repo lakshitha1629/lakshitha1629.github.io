@@ -1,6 +1,6 @@
 <template>
     <div class="folio" :class="{ 'is-ready': ready }">
-        <a class="folio-skip" href="#about">Skip to content</a>
+        <a class="folio-skip" href="#main">Skip to content</a>
         <div class="folio-grain" aria-hidden="true"></div>
         <div class="folio-glow" aria-hidden="true"></div>
         <div ref="terrain" class="folio-terrain" aria-hidden="true">
@@ -20,7 +20,7 @@
                     <a
                         v-for="item in navItems"
                         :key="item.id"
-                        :href="'#' + item.id"
+                        :href="sectionHref(item.id)"
                         :class="{ 'is-active': activeId === item.id }"
                         :aria-label="item.label"
                         @click.prevent="go(item.id)"
@@ -39,7 +39,7 @@
 
             <main id="main" class="folio-main">
                 <article v-if="routeProject" class="folio-section project-article">
-                    <router-link class="project-back" to="/projects"><i class="bx bx-left-arrow-alt"></i> Selected work</router-link>
+                    <router-link class="project-back" to="/projects/"><i class="bx bx-left-arrow-alt"></i> Selected work</router-link>
                     <p class="folio-kicker">{{ routeProject.overline }}</p>
                     <h1>{{ routeProject.title }}</h1>
                     <p class="folio-lead">
@@ -69,7 +69,7 @@
                 </article>
 
                 <article v-else-if="routePublication" class="folio-section project-article">
-                    <router-link class="project-back" to="/publications"><i class="bx bx-left-arrow-alt"></i> Publications</router-link>
+                    <router-link class="project-back" to="/publications/"><i class="bx bx-left-arrow-alt"></i> Publications</router-link>
                     <p class="folio-kicker">{{ routePublication.type }} · {{ routePublication.year }}</p>
                     <h1>{{ routePublication.title }}</h1>
                     <p class="folio-lead">Author: {{ routePublication.authors.join(', ') }}</p>
@@ -77,7 +77,7 @@
                     <p v-if="routePublication.venue"><strong>Venue.</strong> {{ routePublication.venue }}</p>
                     <p>
                         <a v-if="routePublication.url" :href="routePublication.url" target="_blank" rel="noopener">External reference</a>
-                        <router-link v-if="routePublication.relatedProject" :to="'/projects/' + routePublication.relatedProject">
+                        <router-link v-if="routePublication.relatedProject" :to="'/projects/' + routePublication.relatedProject + '/'">
                             Related project
                         </router-link>
                     </p>
@@ -91,18 +91,17 @@
 
                 <template v-else>
                 <section id="home" class="folio-cover">
-                    <p class="hero-kicker reveal d1"><i class="hero-kicker-dot"></i> Full-Stack Engineer · Tech Lead · Problem Solver</p>
+                    <p class="hero-kicker reveal d1"><i class="hero-kicker-dot"></i> FULL-STACK ENGINEER · TECH LEAD · AI DEVELOPER</p>
                     <p class="hero-lede reveal d1">
-                        Associate Tech Lead, Full-Stack Engineer and AI Developer based in Sri Lanka.
+                        Building scalable software, intelligent systems, and digital products.
                     </p>
 
                     <p class="hero-title">
-                        <span class="hero-title-line reveal d1">I’m building</span>
-                        <em class="mark reveal d2">software &amp; systems</em>
-                        <span class="hero-title-line reveal d3">people remember</span>
+                        <span class="hero-title-line reveal d1">I turn complex ideas into</span>
+                        <em class="mark reveal d2">software that works.</em>
                     </p>
 
-                    <p class="hero-desc reveal d3">{{ profile.headline }} Passionate about solving real-world problems with technology.</p>
+                    <p class="hero-desc reveal d3">Associate Tech Lead with experience building full-stack solutions across fintech, SaaS, streaming, and AI. Focused on creating reliable, scalable products that solve real-world problems.</p>
 
                     <div class="hero-stats reveal d4">
                         <template v-for="(stat, index) in profile.stats" :key="stat.label">
@@ -126,13 +125,13 @@
                             </svg>
                             <p class="hero-orbit-copy">
                                 <span>Ideas</span>
-                                <span>→ Products</span>
-                                <span>→ Impact.</span>
+                                <span>→ Software</span>
+                                <span>→ Impact</span>
                             </p>
                         </div>
                         <div class="hero-visual-card reveal d5">
                             <img :src="profile.avatar" alt="" />
-                            <span>Let’s build something great!</span>
+                            <span>Let's build<br />something great!</span>
                             <span class="hero-visual-spark"></span>
                         </div>
                     </div>
@@ -252,10 +251,10 @@
                             v-for="project in visibleShowcase"
                             :key="project.id"
                             class="work-card"
-                            :to="'/projects/' + project.id"
+                            :to="'/projects/' + project.id + '/'"
                         >
                             <div class="work-card-media">
-                                <img :src="project.image" :alt="project.title + ' by Lakshitha Perera'" />
+                                <img loading="lazy" decoding="async" :src="project.image" :alt="project.title + ' by Lakshitha Perera'" />
                             </div>
                             <div class="work-card-body">
                                 <small>{{ project.overline }}</small>
@@ -265,6 +264,10 @@
                             </div>
                         </router-link>
                     </div>
+                    <details v-if="otherProjects.length">
+                        <summary>More projects</summary>
+                        <p v-for="project in otherProjects" :key="project.id"><router-link :to="'/projects/' + project.id + '/'">{{ project.title }}</router-link></p>
+                    </details>
                     <p v-if="github" class="work-more">
                         <a :href="profile.github.profile" target="_blank" rel="noopener">@{{ profile.github.username }}</a>
                         · {{ github.publicRepos }} public repositories on GitHub
@@ -289,7 +292,7 @@
                             v-for="item in publications"
                             :key="item.id"
                             class="edu-card pub-card"
-                            :to="'/publications/' + item.id"
+                            :to="'/publications/' + item.id + '/'"
                         >
                             <span class="folio-when">{{ item.year }} · {{ item.type }}</span>
                             <h3>{{ item.title }}</h3>
@@ -379,17 +382,18 @@
                     </div>
                     <nav class="folio-sitelinks" aria-label="Portfolio pages">
                         <router-link to="/">Home</router-link>
-                        <router-link to="/about">About</router-link>
-                        <router-link to="/experience">Experience</router-link>
-                        <router-link to="/projects">Projects</router-link>
-                        <router-link to="/publications">Publications</router-link>
-                        <router-link to="/education">Education</router-link>
-                        <router-link to="/contact">Contact</router-link>
+                        <router-link to="/about/">About</router-link>
+                        <router-link to="/experience/">Experience</router-link>
+                        <router-link to="/projects/">Projects</router-link>
+                        <router-link to="/skills/">Skills</router-link>
+                        <router-link to="/publications/">Publications</router-link>
+                        <router-link to="/education/">Education</router-link>
+                        <router-link to="/contact/">Contact</router-link>
                     </nav>
-                    <div class="folio-legal">
+                    <footer class="folio-legal">
                         <span>All rights reserved</span>
                         <span>© {{ year }} {{ profile.name }}</span>
-                    </div>
+                    </footer>
                 </section>
                 </template>
             </main>
@@ -424,13 +428,13 @@ const SECTION_ROUTES = {
 
 const ROUTE_BY_SECTION = {
     home: '/',
-    about: '/about',
-    experience: '/experience',
-    work: '/projects',
-    publications: '/publications',
-    skills: '/skills',
-    education: '/education',
-    contact: '/contact',
+    about: '/about/',
+    experience: '/experience/',
+    work: '/projects/',
+    publications: '/publications/',
+    skills: '/skills/',
+    education: '/education/',
+    contact: '/contact/',
 };
 
 export default {
@@ -491,6 +495,7 @@ export default {
         showcaseProjects() {
             return showcaseOrder.map((id) => projects.find((p) => p.id === id)).filter(Boolean);
         },
+        otherProjects() { return projects.filter(p => !showcaseOrder.includes(p.id)); },
         showcaseFilters() {
             const categories = new Set(this.showcaseProjects.map((p) => p.category));
             return ['All', ...categories];
@@ -559,6 +564,7 @@ export default {
         window.removeEventListener('scroll', this.onTerrainScroll);
     },
     methods: {
+        sectionHref(id) { return ROUTE_BY_SECTION[id] || '/'; },
         toggleTheme() {
             this.isLight = !this.isLight;
             document.documentElement.classList.toggle('theme-light', this.isLight);
@@ -680,6 +686,7 @@ export default {
             window.addEventListener('resize', this.onTimelineScroll);
         },
         bindSpy() {
+            if (window.__PRERENDER__) return;
             const ids = ['home', 'about', 'experience', 'work', 'publications', 'skills', 'education', 'contact'];
             const obs = new IntersectionObserver(
                 (entries) => {
@@ -689,8 +696,7 @@ export default {
                     const id = visible.target.id;
                     if (id && id !== this.activeId) {
                         this.activeId = id;
-                        const path = ROUTE_BY_SECTION[id];
-                        if (path && this.$route.path !== path) this.$router.replace(path).catch(() => {});
+                        // Scrolling updates the rail; navigation alone changes the URL.
                     }
                 },
                 { rootMargin: '-35% 0px -45% 0px', threshold: [0.1, 0.25, 0.5] }
@@ -722,6 +728,7 @@ export default {
         },
         async loadGithub() {
             this.github = { publicRepos: profile.github.fallbackPublicRepos };
+            if (window.__PRERENDER__) return;
             try {
                 const res = await fetch('https://api.github.com/users/lakshitha1629');
                 if (!res.ok) return;

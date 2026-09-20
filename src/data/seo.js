@@ -1,24 +1,20 @@
 import { publications } from './publications';
 import { projects } from './projects';
+import { socials } from './socials';
 
 export const SITE_ORIGIN = 'https://lakshitha1629.github.io';
 export const OG_IMAGE = `${SITE_ORIGIN}/profile/lakshitha.png`;
 export const DEFAULT_TITLE = 'Lakshitha Perera | Associate Tech Lead & Full-Stack Engineer';
 export const DEFAULT_DESCRIPTION =
-    'Lakshitha Perera is an Associate Tech Lead and Full-Stack Engineer from Sri Lanka specializing in AI, scalable web applications, cloud systems and software engineering.';
+    'Lakshitha Perera, Associate Tech Lead and full-stack software engineer in Sri Lanka, builds scalable fintech, AI and cloud products. Explore his work and skills.';
 export const PERSON_ID = `${SITE_ORIGIN}/#lakshitha-perera`;
 export const PROFILE_ID = `${SITE_ORIGIN}/#profile`;
 
-export const SAME_AS = [
-    'https://www.linkedin.com/in/lakshitha1629/',
-    'https://github.com/lakshitha1629',
-    'https://medium.com/@lakshitha1629',
-    'https://twitter.com/lakshitha1629',
-];
+export const SAME_AS = socials.map(profile => profile.url);
 
 export function canonicalUrl(path) {
     if (!path || path === '/') return `${SITE_ORIGIN}/`;
-    return `${SITE_ORIGIN}${path}`;
+    return `${SITE_ORIGIN}/${path.replace(/^\/+|\/+$/g, '')}/`;
 }
 
 export function personEntity() {
@@ -145,7 +141,7 @@ export function projectSeo(project) {
         jsonLd: {
             '@context': 'https://schema.org',
             '@graph': [
-                profilePageJsonLd(),
+                personEntity(),
                 {
                     '@type': 'CreativeWork',
                     '@id': `${canonicalUrl(path)}#work`,
@@ -172,15 +168,16 @@ export function publicationSeo(publication) {
         jsonLd: {
             '@context': 'https://schema.org',
             '@graph': [
-                profilePageJsonLd(),
+                personEntity(),
                 {
                     '@type': 'CreativeWork',
                     '@id': `${canonicalUrl(path)}#publication`,
                     name: publication.title,
                     description: publication.description,
-                    datePublished: publication.year,
-                    url: publication.url || canonicalUrl(path),
-                    author: { '@id': PERSON_ID },
+                    datePublished: /^\d{4}$/.test(publication.year) ? publication.year : undefined,
+                    url: canonicalUrl(path),
+                    sameAs: publication.url || undefined,
+                    author: publication.authors.map(name => ({ '@type': 'Person', name })),
                     creator: { '@id': PERSON_ID },
                 },
             ],
@@ -198,17 +195,38 @@ export function resolveSeo(route) {
         const publication = publications.find((item) => item.id === route.params.id);
         if (publication) return pagePayload(publicationSeo(publication));
     }
-    const section = sectionPages[route.name] || sectionPages.Home;
+    const section = sectionPages[route.name];
+    if (!section) return { title: 'Page not found | Lakshitha Perera', description: 'This page does not exist. Explore the portfolio.', robots: 'noindex,follow', image: OG_IMAGE, jsonLd: null };
     return pagePayload(section);
 }
 
-export function pagePayload(page) {
+export function pageJsonLd(page) {
     const url = canonicalUrl(page.path);
     return {
+        '@context': 'https://schema.org',
+        '@graph': [
+            personEntity(),
+            {
+                '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`,
+                url: `${SITE_ORIGIN}/`, name: 'Lakshitha Perera',
+                publisher: { '@id': PERSON_ID },
+            },
+            {
+                '@type': page.path === '/' ? 'ProfilePage' : 'WebPage',
+                '@id': `${url}#page`, url, name: page.title, description: page.description,
+                mainEntity: { '@id': PERSON_ID },
+                isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+            },
+        ],
+    };
+}
+
+export function pagePayload(page) {
+    return {
         ...page,
-        url,
+        url: canonicalUrl(page.path),
         image: OG_IMAGE,
-        jsonLd: page.jsonLd || profilePageJsonLd(),
+        jsonLd: page.jsonLd || pageJsonLd(page),
     };
 }
 
@@ -219,3 +237,5 @@ export default {
     sectionPages,
     resolveSeo,
 };
+
+export const indexablePaths = [...Object.values(sectionPages).map(page => page.path), ...projects.map(p => `/projects/${p.id}/`), ...publications.map(p => `/publications/${p.id}/`)].map(path => new URL(canonicalUrl(path)).pathname);

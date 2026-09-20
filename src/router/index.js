@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { projects } from '../data/projects';
+import { publications } from '../data/publications';
 import Folio from './../views/Folio.vue';
 
 const routes = [
@@ -12,69 +14,69 @@ const routes = [
         redirect: '/',
     },
     {
-        path: '/about',
+        path: '/about/',
         name: 'About',
         component: Folio,
     },
     {
-        path: '/experience',
+        path: '/experience/',
         name: 'Experience',
         component: Folio,
     },
     {
-        path: '/projects',
+        path: '/projects/',
         name: 'Project',
         component: Folio,
     },
     {
-        path: '/projects/:id',
+        path: `/projects/:id(${projects.map(p => p.id).join('|')})/`,
         name: 'ProjectDetail',
         component: Folio,
     },
     {
         path: '/Project',
-        redirect: '/projects',
+        redirect: '/projects/',
     },
     {
         path: '/work',
-        redirect: '/projects',
+        redirect: '/projects/',
     },
     {
-        path: '/publications',
+        path: '/publications/',
         name: 'Publications',
         component: Folio,
     },
     {
-        path: '/publications/:id',
+        path: `/publications/:id(${publications.map(p => p.id).join('|')})/`,
         name: 'PublicationDetail',
         component: Folio,
     },
     {
-        path: '/contact',
+        path: '/contact/',
         name: 'Contact',
         component: Folio,
     },
     {
-        path: '/skills',
+        path: '/skills/',
         name: 'Skills',
         component: Folio,
     },
     {
-        path: '/education',
+        path: '/education/',
         name: 'Education',
         component: Folio,
     },
     {
         path: '/ai',
-        redirect: '/projects',
+        redirect: '/projects/',
     },
     {
         path: '/engineering',
-        redirect: '/skills',
+        redirect: '/skills/',
     },
     {
         path: '/future',
-        redirect: '/about',
+        redirect: '/about/',
     },
     {
         path: '/:pathMatch(.*)*',
@@ -89,6 +91,10 @@ const router = createRouter({
     scrollBehavior() {
         return false;
     },
+});
+
+router.beforeEach(to => {
+    if (to.name !== 'PageNotFound' && to.path !== '/' && !to.path.endsWith('/')) return { path: to.path + '/', query: to.query, hash: to.hash, replace: true };
 });
 
 export default router;

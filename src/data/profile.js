@@ -1,3 +1,4 @@
+import { imageUrl } from './image';
 import { email, github, resume, socials } from './socials';
 
 export const profile = {
@@ -6,9 +7,9 @@ export const profile = {
     brand: 'LP',
     role: 'Associate Tech Lead',
     location: 'Nugegoda, Sri Lanka',
-    photo: '/profile/lakshitha.png',
+    photo: imageUrl('/profile/lakshitha.png'),
     photoAlt: 'Lakshitha Perera, Associate Tech Lead and Full-Stack Engineer from Sri Lanka',
-    avatar: '/profile/avatar.png',
+    avatar: imageUrl('/profile/avatar.png'),
     email,
     resume,
     socials,

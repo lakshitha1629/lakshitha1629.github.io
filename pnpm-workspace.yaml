@@ -1,8 +1,0 @@
-packages:
-  - '.'
-
-allowBuilds:
-  '@parcel/watcher': false
-  core-js: false
-  ejs: false
-  yorkie: false

@@ -23,7 +23,9 @@ module.exports = {
         msTileColor: '#0b0b0b',
         workboxOptions: {
             skipWaiting: true,
-            exclude: [/_redirects/],
+            // HTML is generated after webpack. Never cache an obsolete app shell.
+            exclude: [/\.html$/, /\.(?:png|jpe?g|webp|pdf)$/i, /sitemap\.xml$/],
+            navigateFallback: undefined,
         },
         iconPaths: {
             favicon32: 'img/icons/favicon-32x32.png',
