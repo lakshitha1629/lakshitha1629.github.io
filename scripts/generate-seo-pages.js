@@ -141,24 +141,34 @@ const PROJECTS = [
 
 const PUBLICATIONS = [
     {
-        id: 'phishnet',
-        title: 'PhishNet: Deep Learning for Phishing Detection',
+        id: 'currency-vision-ircuwu-2020',
+        title:
+            'High Tech Vision to Detect Currency Denomination and Virtual Wallet to Retrieve the Monetary Position for Visually Debilitated People',
         year: '2020',
-        type: 'Research project',
+        type: 'Research publication',
         description:
-            'A deep-learning research project by Lakshitha Perera applying neural networks to phishing detection.',
-        venue: 'Independent research · Uva Wellassa University of Sri Lanka',
-        url: 'https://github.com/lakshitha1629/PhishNet_Deep_Learning_for_Phishing_Detection',
+            'Research publication at IRCUWU 2020 on computer vision for currency denomination detection and a virtual wallet for visually impaired people.',
+        venue: 'IRCUWU 2020 · Proceedings · Uva Wellassa University of Sri Lanka',
+        url: 'https://www.uwu.ac.lk/wp-content/uploads/2020/proceeding_oct_08.pdf',
     },
     {
-        id: 'python-sinhala',
-        title: 'Python Sinhala',
+        id: 'python-sinhala-book',
+        title: 'Python Sinhala Book',
         year: '2020',
-        type: 'Educational resource',
+        type: 'Book',
+        description: 'A Sinhala-language book introducing Python programming for beginners, authored by Lakshitha Perera.',
+        venue: 'Published 2020',
+        url: '',
+    },
+    {
+        id: 'medium-technical-writing',
+        title: 'Technical Writing on Medium',
+        year: 'Ongoing',
+        type: 'Technical writing',
         description:
-            'A Sinhala-language Python learning resource by Lakshitha Perera, with a companion Android interpreter so beginners can study and practise without a computer.',
-        venue: 'BevyLabs · Google Play',
-        url: 'https://play.google.com/store/apps/details?id=bevylabs.buddhika.pythonsinhala&hl=en_US&gl=US',
+            'Articles on AI, software engineering, networking, API scalability and load testing by Lakshitha Perera.',
+        venue: 'Medium · @lakshitha1629',
+        url: 'https://medium.com/@lakshitha1629',
     },
 ];
 
@@ -192,8 +202,11 @@ function projectListHtml() {
 }
 
 function publicationListHtml() {
-    return `<h2>Publications</h2><ul>${PUBLICATIONS.map(
-        (p) => `<li><a href="${SITE}/publications/${p.id}">${p.title}</a> (${p.year}) — ${p.description}</li>`
+    return `<h2>Publications &amp; Technical Writing</h2><ul>${PUBLICATIONS.map(
+        (p) =>
+            `<li><a href="${SITE}/publications/${p.id}">${p.title}</a> (${p.year} · ${p.type}) — ${p.description}${
+                p.venue ? ` · ${p.venue}` : ''
+            }</li>`
     ).join('')}</ul>`;
 }
 
@@ -211,6 +224,7 @@ const SECTION_PAGES = [
 <h2>About</h2>
 <p>I’m Lakshitha, an Associate Tech Lead and full-stack software engineer based in Nugegoda, Sri Lanka. I’ve spent 6+ years delivering enterprise applications across fintech, SaaS, streaming, e-commerce and AI/ML.</p>
 <h2>Experience</h2>
+<p><strong>Associate Tech Lead / Software Engineer — DirectFN</strong> (Jul 2022 — Present). Enterprise fintech applications with C#/.NET and Oracle PL/SQL.</p>
 <p><strong>Full Stack Developer — ProjectXSpace</strong> (Aug 2020 — Apr 2022). E-commerce, vehicle-routing and recommendation products.</p>
 <p><strong>Software Engineer — BevyLabs</strong> (Mar 2020 — Sep 2020). Web, mobile and computer-vision products.</p>
 <p><strong>Software Engineer Intern — Mobitel</strong> (Sep 2019 — Feb 2020).</p>
@@ -275,12 +289,12 @@ ${publicationListHtml()}
     },
     {
         path: '/publications',
-        title: 'Publications | Lakshitha Perera',
+        title: 'Publications & Technical Writing | Lakshitha Perera',
         description:
-            'Research and educational work by Lakshitha Perera, including PhishNet deep-learning research and the Python Sinhala learning resource.',
+            'Publications and technical writing by Lakshitha Perera: IRCUWU 2020 research on currency vision for the visually impaired, Python Sinhala Book (2020), and Medium articles on AI, software engineering and API scalability.',
         ogType: 'website',
-        h1: 'Publications by Lakshitha Perera',
-        body: wrap('Publications by Lakshitha Perera', publicationListHtml()),
+        h1: 'Publications & Technical Writing',
+        body: wrap('Publications &amp; Technical Writing', publicationListHtml()),
         jsonLd: PROFILE_JSON_LD,
         priority: '0.8',
     },
@@ -375,6 +389,9 @@ function projectPages() {
 function publicationPages() {
     return PUBLICATIONS.map((item) => {
         const urlPath = `/publications/${item.id}`;
+        const external = item.url
+            ? `<p><a href="${item.url}">External reference</a></p>`
+            : '';
         return {
             path: urlPath,
             title: `${item.title} | Lakshitha Perera`,
@@ -385,10 +402,9 @@ function publicationPages() {
                 item.title,
                 `
 <p>${item.type} · ${item.year}</p>
-<p>Author: Lakshitha Perera</p>
 <p>${item.description}</p>
 <p><strong>Venue.</strong> ${item.venue}</p>
-<p><a href="${item.url}">External reference</a></p>
+${external}
 `
             ),
             jsonLd: {
@@ -400,8 +416,8 @@ function publicationPages() {
                         '@id': `${SITE}${urlPath}#publication`,
                         name: item.title,
                         description: item.description,
-                        datePublished: item.year,
-                        url: item.url,
+                        datePublished: item.year === 'Ongoing' ? undefined : item.year,
+                        url: item.url || `${SITE}${urlPath}`,
                         author: { '@id': `${SITE}/#lakshitha-perera` },
                     },
                 ],

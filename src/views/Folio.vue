@@ -72,13 +72,13 @@
                     <router-link class="project-back" to="/publications"><i class="bx bx-left-arrow-alt"></i> Publications</router-link>
                     <p class="folio-kicker">{{ routePublication.type }} · {{ routePublication.year }}</p>
                     <h1>{{ routePublication.title }}</h1>
-                    <p class="folio-lead">Author: Lakshitha Perera</p>
+                    <p class="folio-lead">Author: {{ routePublication.authors.join(', ') }}</p>
                     <p>{{ routePublication.description }}</p>
                     <p v-if="routePublication.venue"><strong>Venue.</strong> {{ routePublication.venue }}</p>
                     <p>
                         <a v-if="routePublication.url" :href="routePublication.url" target="_blank" rel="noopener">External reference</a>
                         <router-link v-if="routePublication.relatedProject" :to="'/projects/' + routePublication.relatedProject">
-                            Project page
+                            Related project
                         </router-link>
                     </p>
                 </article>
@@ -273,11 +273,17 @@
                 </section>
 
                 <section id="publications" class="folio-section">
-                    <p class="folio-kicker">Publications</p>
+                    <p class="folio-kicker">Publications & Technical Writing</p>
                     <component :is="sectionTag('Publications')">{{
-                        sectionHeading('Publications', 'Publications by Lakshitha Perera', 'Writing and research.')
+                        sectionHeading(
+                            'Publications',
+                            'Publications & Technical Writing',
+                            'Research, books and writing.'
+                        )
                     }}</component>
-                    <p class="folio-lead">Research and educational work published under the name Lakshitha Perera.</p>
+                    <p class="folio-lead">
+                        Research publication, a programming book, and ongoing technical writing by Lakshitha Perera.
+                    </p>
                     <div class="edu-grid">
                         <router-link
                             v-for="item in publications"
@@ -287,7 +293,7 @@
                         >
                             <span class="folio-when">{{ item.year }} · {{ item.type }}</span>
                             <h3>{{ item.title }}</h3>
-                            <p>Author: {{ item.authors.join(', ') }}</p>
+                            <p v-if="item.authors && item.authors.length">Author: {{ item.authors.join(', ') }}</p>
                             <p>{{ item.description }}</p>
                             <p v-if="item.venue">{{ item.venue }}</p>
                         </router-link>
@@ -457,7 +463,7 @@ export default {
                 { id: 'about', label: 'About', icon: 'bx-user' },
                 { id: 'experience', label: 'Experience', icon: 'bx-briefcase' },
                 { id: 'work', label: 'Work', icon: 'bx-grid-alt' },
-                { id: 'publications', label: 'Writing', icon: 'bx-news' },
+                { id: 'publications', label: 'Writing', icon: 'bx-book-open' },
                 { id: 'skills', label: 'Skills', icon: 'bx-code-alt' },
                 { id: 'education', label: 'Education', icon: 'bx-book' },
                 { id: 'contact', label: 'Contact', icon: 'bx-envelope' },

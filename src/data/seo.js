@@ -117,10 +117,10 @@ export const sectionPages = {
     },
     Publications: {
         path: '/publications',
-        title: 'Publications | Lakshitha Perera',
+        title: 'Publications & Technical Writing | Lakshitha Perera',
         description:
-            'Research and educational work by Lakshitha Perera, including PhishNet deep-learning research and the Python Sinhala learning resource.',
-        h1: 'Publications by Lakshitha Perera',
+            'Publications and technical writing by Lakshitha Perera: IRCUWU 2020 research on currency vision for the visually impaired, Python Sinhala Book (2020), and Medium articles on AI, software engineering and API scalability.',
+        h1: 'Publications & Technical Writing',
         ogType: 'website',
     },
     Contact: {
