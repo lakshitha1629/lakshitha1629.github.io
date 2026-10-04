@@ -32,10 +32,10 @@ Completed locally: `npm install`, `npm run build`, `npm run lint -- --no-fix`, a
 ## Google Search Console: exact setup
 
 1. Open https://search.google.com/search-console and choose **Add property → URL prefix**. Enter `https://lakshitha1629.github.io/`. Use URL prefix because you do not control DNS for `github.io`.
-2. Choose **HTML tag** verification. Copy only the value inside the tag's `content="..."` attribute.
-3. In this GitHub repository, open **Settings → Secrets and variables → Actions → Variables → New repository variable**. Name it `GOOGLE_SITE_VERIFICATION` and paste the real value. The workflow maps it to `VUE_APP_GOOGLE_SITE_VERIFICATION`. For a local build, copy `.env.example` to `.env.local` and set the latter variable. No verification token has been invented.
-4. Commit/push the changes to `master`, or manually run **Actions → Deploy to GitHub Pages → Run workflow** after the changes are on GitHub. In **Settings → Pages**, select **Deploy from a branch**, branch **gh-pages**, folder **/(root)**. Wait for deployment to complete.
-5. Open the live homepage's page source. Confirm `google-site-verification` contains your value. Return to Search Console and click **Verify**. Keep the tag in subsequent builds.
+2. The URL-prefix property uses Google's **HTML file** verification method. Keep `public/google6c688b0cd4e28d89.html` in the repository so the verified property retains ownership. Do not use the DNS verification prompt for `lakshitha1629.github.io`.
+3. Commit/push the changes to `master`, or manually run **Actions → Deploy to GitHub Pages → Run workflow** after the changes are on GitHub. In **Settings → Pages**, select **Deploy from a branch**, branch **gh-pages**, folder **/(root)**. Wait for deployment to complete.
+4. Open `https://lakshitha1629.github.io/google6c688b0cd4e28d89.html` and confirm that it contains Google's verification line. Return to Search Console and click **Verify**.
+5. The build also supports HTML-tag verification as an alternative. Set the `GOOGLE_SITE_VERIFICATION` GitHub Actions repository variable to the `content` value supplied by Search Console; the workflow maps it to `VUE_APP_GOOGLE_SITE_VERIFICATION`. For a local build, copy `.env.example` to `.env.local` and set that variable.
 6. Under **Sitemaps**, submit `sitemap.xml`. Confirm that Google can read it and that the submitted URLs use trailing slashes.
 7. In **URL inspection**, paste each priority URL below. Choose **Test live URL**, check crawl permission, successful fetch, rendered content and declared canonical, then **Request indexing**.
 8. Review **Page indexing**, **Sitemaps**, **Manual actions**, and **Security issues**. Inspect representative project/publication pages again after Google recrawls. Validate the live markup with https://validator.schema.org/ and https://search.google.com/test/rich-results (not every valid schema type has a rich result).

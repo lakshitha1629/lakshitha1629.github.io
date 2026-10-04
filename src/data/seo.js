@@ -4,9 +4,9 @@ import { socials } from './socials';
 
 export const SITE_ORIGIN = 'https://lakshitha1629.github.io';
 export const OG_IMAGE = `${SITE_ORIGIN}/profile/lakshitha.png`;
-export const DEFAULT_TITLE = 'Lakshitha Perera | Tech Lead & Full-Stack Engineer';
+export const DEFAULT_TITLE = 'Lakshitha Perera | Tech Lead, Full-Stack & AI Engineer in Sri Lanka';
 export const DEFAULT_DESCRIPTION =
-    'Lakshitha Perera, Tech Lead and full-stack software engineer in Sri Lanka, builds scalable fintech, AI and cloud products. Explore his work and skills.';
+    'Lakshitha Perera is a Tech Lead, Full-Stack Engineer and AI Developer in Sri Lanka, building fintech and AI products with .NET, Angular, React and Python.';
 export const PERSON_ID = `${SITE_ORIGIN}/#lakshitha-perera`;
 export const PROFILE_ID = `${SITE_ORIGIN}/#profile`;
 
@@ -134,9 +134,9 @@ export function projectSeo(project) {
     const description = `${project.solution} Built by Lakshitha Perera, Tech Lead and Full-Stack Engineer from Sri Lanka.`;
     return {
         path,
-        title: `${project.title} | Lakshitha Perera`,
+        title: project.seoTitle || `${project.title} | Lakshitha Perera`,
         description,
-        h1: project.title,
+        h1: project.seoHeading || project.title,
         ogType: 'article',
         jsonLd: {
             '@context': 'https://schema.org',

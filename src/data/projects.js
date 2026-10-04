@@ -19,6 +19,8 @@ export const projects = [
     {
         id: 'toolgenie',
         title: 'ToolGenie',
+        seoTitle: 'ToolGenie AI Creator Platform | Lakshitha Perera',
+        seoHeading: 'ToolGenie — AI Creator Platform',
         overline: 'AI Creator Platform · Tech Lead',
         category: 'AI / ML',
         featured: true,

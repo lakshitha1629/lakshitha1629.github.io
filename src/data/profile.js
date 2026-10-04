@@ -16,9 +16,9 @@ export const profile = {
     github,
     supporting: ['Full-Stack Engineering', 'Fintech', 'AI & Machine Learning', 'Technical Leadership'],
     headline: 'Tech Lead building full-stack software for fintech, SaaS, streaming and AI products.',
-    seoTitle: 'Lakshitha Perera | Tech Lead & Full-Stack Engineer',
+    seoTitle: 'Lakshitha Perera | Tech Lead, Full-Stack & AI Engineer in Sri Lanka',
     seoDescription:
-        'Lakshitha Perera is a Tech Lead and Full-Stack Engineer from Sri Lanka specializing in AI, scalable web applications, cloud systems and software engineering.',
+        'Lakshitha Perera is a Tech Lead, Full-Stack Engineer and AI Developer in Sri Lanka, building fintech and AI products with .NET, Angular, React and Python.',
     siteUrl: 'https://lakshitha1629.github.io/',
     ogImage: 'https://lakshitha1629.github.io/profile/lakshitha.png',
     startedYear: 2019,
@@ -28,7 +28,7 @@ export const profile = {
         { value: '01', label: 'published research paper', icon: 'bx-file' },
     ],
     about: {
-        who: 'I’m Lakshitha, an Tech Lead and full-stack software engineer based in Sri Lanka, with 6+ years of experience building enterprise and digital products across fintech, SaaS, streaming, e-commerce, and AI.',
+        who: 'I’m Lakshitha, a Tech Lead and full-stack software engineer based in Sri Lanka, with 6+ years of experience building enterprise and digital products across fintech, SaaS, streaming, e-commerce, and AI.',
         what: 'I build end-to-end software across C#/.NET, Angular, TypeScript, Oracle PL/SQL, Python, and REST APIs. My work spans application development, complex database systems, API integrations, technical delivery, internal tooling, and AI-powered products.',
         think: 'I focus on practical engineering that works in the real world. I enjoy turning complex requirements, imperfect data, performance challenges, and security constraints into reliable software that teams and users can depend on.',
         exploring:
