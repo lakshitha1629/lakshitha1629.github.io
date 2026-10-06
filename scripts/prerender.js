@@ -47,7 +47,9 @@ async function main() {
             fs.mkdirSync(folder, { recursive: true });
             fs.writeFileSync(path.join(folder, 'index.html'), `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Page moved | Lakshitha Perera</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://lakshitha1629.github.io${alias.target}"><meta http-equiv="refresh" content="0;url=${alias.target}"></head><body><p>This page has moved. <a href="${alias.target}">Continue to the portfolio</a>.</p></body></html>`);
         }
-        fs.writeFileSync(path.join(dist, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + paths.map(p => `  <url><loc>https://lakshitha1629.github.io${p}</loc></url>`).join('\n') + '\n</urlset>\n');
+        const sitemapUrls = paths.map(p => `https://lakshitha1629.github.io${p}`);
+        fs.writeFileSync(path.join(dist, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + sitemapUrls.map(url => `  <url><loc>${url}</loc></url>`).join('\n') + '\n</urlset>\n');
+        fs.writeFileSync(path.join(dist, 'sitemap.txt'), sitemapUrls.join('\n') + '\n');
         console.log(`Prerendered ${paths.length} Vue pages and a genuine 404 page.`);
     } finally {
         if (browser) await browser.close();

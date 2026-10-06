@@ -6,6 +6,7 @@ const { serve } = require('./static-server');
 async function main() {
     const urls = [...fs.readFileSync('dist/sitemap.xml', 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
     assert.equal(new Set(urls).size, urls.length, 'Duplicate sitemap URLs');
+    assert.deepEqual(fs.readFileSync('dist/sitemap.txt', 'utf8').trim().split('\n'), urls, 'Text sitemap differs from XML sitemap');
     const robots = fs.readFileSync('dist/robots.txt', 'utf8');
     assert(!/^Disallow:\s*\/\s*$/m.test(robots));
     assert(robots.includes('Sitemap: https://lakshitha1629.github.io/sitemap.xml'));
